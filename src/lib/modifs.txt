@@ -1,0 +1,6 @@
+Fichier modifié : blockly/core/renderers/zelos/info.d.ts
+Changement de type de la méthode adjustXPosition_() de protected à public
+
+Fichier modifié : blockly/core/renderers/common/info.d.ts
+Changement de type de la méthode makeSpacerRow_ de protected à public
+Changement de type de la méthode constants_ de protected à public

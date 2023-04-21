@@ -1,0 +1,207 @@
+:root {
+  --bg-color: #eee;
+  --term-bg-color: #18181b;
+  --term-fg-color: #fff;
+  --base-unit: 1vw;
+  --corner-radius: calc(0.4 * var(--base-unit));
+  --half-corner-radius: calc(var(--corner-radius) / 2);
+  --main-font-size: calc(1.2 * var(--base-unit));
+  --main-font: "Open Sans", sans-serif;
+  --shadow-logo-size: calc(0.3 * var(--base-unit));
+  --logo-height: 12vh;
+  --term-font-size: 12pt;
+  --term-font: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro",
+    monospace;
+  --term-script-color: var(--python-grey);
+  --main-container-width: 100%;
+  --main-container-height: 100%;
+  --left-container-width: 50%;
+  --right-container-width: calc(100% - var(--left-container-width) - 2%);
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --link-color: #888;
+  --subtitle-color: var(--link-color);
+  --import-color: %{BKY_IMPORT_COLOR};
+  --notification-font-size: 1rem;
+}
+
+[data-theme="light"] {
+  --term-bg-color: #fff;
+  --term-fg-color: #272822;
+}
+
+body {
+  background-color: var(--bg-color);
+  font-family: var(--main-font);
+  margin: 0px;
+  padding: 0px;
+  font-size: var(--main-font-size);
+}
+
+/* default mode is dark */
+.darklighted {
+  background-color: var(--term-bg-color);
+  --background: var(--term-bg-color);
+  color: var(--term-fg-color);
+  --color: var(--term-fg-color);
+}
+
+
+#editor {
+  float: none;
+  width: 100%;
+  /* height: var(--term-height); */
+  border-radius: 0px 0px 8px 8px;
+  margin: 0px;
+  padding-top: 0px;
+}
+
+#shell {
+  position: relative;
+  width: 100%;
+  height: calc(50vh - 165px);
+  float: none;
+  resize: none;
+  background-color: var(--term-bg-color);
+  border-radius: 0px 0px 8px 8px;
+  font-family: var(--term-font);
+  font-size: var(--term-font-size);
+  
+  margin: 0px;
+  border-width: 0px;
+}
+
+.terminal {
+  --size: 1.333;
+}
+
+/* clickable script content */
+.terminal-output > :not(.raw) div.exec-script-header:hover {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/* to force x-scroll */
+.terminal-output div[style*="100%;"] {
+  overflow: unset;
+}
+
+#graphics {
+  position: relative;
+  width: 100%;
+  /* height: var(--term-height); */
+  float: none;
+  flex: initial;
+  background-color: var(--bg-color);
+  resize: none;
+  box-sizing: border-box;
+  margin-bottom: 0px;
+  padding: 0px;
+  border-style: dotted;
+  border-color: var(--term-bg-color);
+  border-width: calc(0.25 * var(--base-unit));
+  font-size: var(--term-font-size);
+  border-radius: 0px 0px 10px 10px;
+}
+
+#graphics > .animation > .anim-controls > .anim-buttons > button {
+  padding: 0;
+  width: unset;
+}
+
+.notie-container {
+  font-size: var(--notification-font-size);
+  height: 50px;
+  z-index: 99;
+  padding: 0;
+}
+
+@media screen and (max-width: 900px) {
+  .notie-container {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 750px) {
+  .notie-container {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 400px) {
+  .notie-container {
+    font-size: 0.8rem;
+  }
+}
+
+.notie-textbox {
+  display: flex;
+  align-items: center;
+}
+
+#blocklyArea {
+  height: 99%;
+  text-align: center;
+  border-radius: 0px 0px 8px 8px;
+}
+
+#blocklyDiv {
+  border-radius: 0px 0px 8px 8px;
+}
+
+/* Makes our label white. */
+.blocklyTreeLabel {
+  color: white;
+}
+
+.blocklyToolboxDiv {
+  /* Makes the toolbox background transparent. */
+  margin-top: 0;
+}
+
+.blocklyToolboxCategory {
+  /* Makes the category background transparent. */
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border-radius: 0px 5px 5px 0px;
+}
+
+.blocklyFlyoutScrollbar {
+  /* Makes the scrollbar transparent. */
+  display: none;
+}
+
+/* Adds space between the categories, rounds the corners and adds space around the label. */
+.blocklyTreeRow {
+  /* Full parent width */
+  width: 100%;
+
+  height: 40px;
+  /* padding-left: 0 !important;
+  padding-right: 0 !important;
+  border: none !important; */
+}
+
+.blocklyTreeLabel {
+  /* horizontally alligned */
+  display: inline-block;
+  /* vertically alligned */
+  vertical-align: middle;
+  margin-top: 9px;
+  border: none !important;
+}
+
+.ui-tooltip {
+  padding: 5px 10px;
+  color: white;
+  background: #333;
+  border-radius: 10px;
+  border: 1px #fff solid !important;
+  /* no transparency */
+  opacity: 1;
+  font-size: 14px;
+  /* no shadow */
+  box-shadow: none;
+}
+
+.ui-tooltip:after {
+  background-color: "#222";
+  border: 0px solid white;
+}
