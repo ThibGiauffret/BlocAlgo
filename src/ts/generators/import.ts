@@ -32,4 +32,9 @@ export function setImportGen() {
     var code = "import matplotlib.pyplot as plt\r\n";
     return code;
   };
+
+  pythonGenerator["import_pil"] = function () {
+    var code = "from PIL import Image\r\n";
+    return code;
+  }
 }

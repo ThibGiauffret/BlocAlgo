@@ -208,11 +208,17 @@ export default class GUI extends GUIBase {
     button = document.getElementsByClassName("theme-toggle")[0] as HTMLElement;
     button?.addEventListener("click", () => this.updateTheme());
 
+    button = document.getElementsByClassName("add-file")[1] as HTMLElement;
+    button?.addEventListener("click", () => this.showAddModal());
+
+    button = document.getElementsByClassName("add-file")[0] as HTMLElement;
+    button?.addEventListener("click", () => this.showAddModal());
+
     button = document.getElementsByClassName("download")[0] as HTMLElement;
     button?.addEventListener("click", () => this.downloadWorkspace());
 
     button = document.getElementsByClassName("import")[0] as HTMLElement;
-    button?.addEventListener("click", () => this.showImportModal());
+    button?.addEventListener("click", () => this.showImportWorkspaceModal());
 
     button = document.getElementsByClassName("save")[0] as HTMLElement;
     button?.addEventListener("click", () => this.save());
@@ -224,10 +230,16 @@ export default class GUI extends GUIBase {
     button?.addEventListener("click", () => this.showMenu());
 
     button = document.getElementById("import_cancel") as HTMLElement;
-    button?.addEventListener("click", () => this.hideImportModal());
+    button?.addEventListener("click", () => this.hideImportWorkspaceModal());
 
     button = document.getElementById("import_ok") as HTMLElement;
     button?.addEventListener("click", () => this.importWorkspace());
+
+    button = document.getElementById("import_add_file_cancel") as HTMLElement;
+    button?.addEventListener("click", () => this.hideAddModal());
+
+    button = document.getElementById("import_add_file_ok") as HTMLElement;
+    button?.addEventListener("click", () => this.importAddFile());
 
     button = document.getElementById("show_hide_toolbox") as HTMLElement;
     button?.addEventListener("click", () => this.hideToolbox());
@@ -460,7 +472,7 @@ export default class GUI extends GUIBase {
     downloadAnchorNode.remove();
   }
 
-  public async showImportModal() {
+  public async showImportWorkspaceModal() {
     let modal = document.getElementById("import_modal")!;
     if (modal?.classList.contains("hidden")) {
       modal.classList.remove("hidden");
@@ -469,7 +481,7 @@ export default class GUI extends GUIBase {
     }
   }
 
-  public async hideImportModal() {
+  public async hideImportWorkspaceModal() {
     let modal = document.getElementById("import_modal")!;
     modal.classList.add("hidden");
   }
@@ -485,7 +497,7 @@ export default class GUI extends GUIBase {
         let json = JSON.parse(result as string);
         this._blockEditor.upload(json);
         this.updateCode();
-        this.hideImportModal();
+        this.hideImportWorkspaceModal();
         notie.alert({
           type: "success",
           text: '<i class="fas fa-check"></i>&nbsp;Fichier de travail importé avec succès !',
@@ -503,7 +515,54 @@ export default class GUI extends GUIBase {
         time: 3,
         position: "bottom",
       });
+      this.hideImportWorkspaceModal();
     };
+  }
+
+  public async showAddModal() {
+    let modal = document.getElementById("add_modal")!;
+    if (modal?.classList.contains("hidden")) {
+      modal.classList.remove("hidden");
+    } else {
+      modal.classList.add("hidden");
+    }
+  }
+
+  public async hideAddModal() {
+    let modal = document.getElementById("add_modal")!;
+    modal.classList.add("hidden");
+  }
+
+  public async importAddFile() {
+
+    let fileInput = document.getElementById("import_add_file") as HTMLInputElement;
+    for (let file of fileInput.files!) {
+      const ext = file.name.split('.').pop();
+      if (ext !== null && ext !== void 0 ? ext : "" ) {
+        await this.putFSRessource(file);
+        notie.alert({
+          type: "success",
+          text: '<i class="fas fa-check"></i>&nbsp;Fichier ajouté avec succès !',
+          stay: false,
+          time: 3,
+          position: "bottom",
+        });
+        this.hideAddModal();
+      } else {
+        notie.alert({
+          type: "success",
+          text: "Une erreur est survenue lors de l'ajout du fichier.",
+          stay: false,
+          time: 3,
+          position: "bottom",
+        });
+        this.hideAddModal();
+
+  }
+}
+       
+        
+
   }
 
   public async save() {

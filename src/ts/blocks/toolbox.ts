@@ -34,6 +34,10 @@ let toolbox = {
           kind: "block",
           type: "import_math",
         },
+        {
+          kind: "block",
+          type: "import_pil",
+        }
       ],
     },
     {
@@ -408,6 +412,47 @@ let toolbox = {
         },
       ],
     },
+    {
+      kind: "category",
+      name: "Images",
+      colour: "%{BKY_PIL_COLOR}",
+      contents: [
+        {
+          kind: "block",
+          type: "pil_open",
+        },
+        {
+          kind: "block",
+          type: "pil_show",
+        },
+        {
+          kind: "block",
+          type: "pil_size",
+        },
+        {
+          kind: "block",
+          type: "pil_resize",
+        },
+        {
+          kind: "block",
+          type: "pil_rotate",
+        },
+        {
+          kind: "block",
+          type: "pil_crop",
+        },
+        {
+          kind: "block",
+          type: "pil_getpixel",
+        },
+        {
+          kind: "block",
+          type: "pil_putpixel",
+        },
+
+      ]
+    },
+    
   ],
 };
 

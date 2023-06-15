@@ -14,6 +14,7 @@ import { setLists } from "./blocks/lists";
 import { setTurtle } from "./blocks/turtle";
 import { setGraph } from "./blocks/graph";
 import { setRandom } from "./blocks/random";
+import {setPIL} from "./blocks/pil";
 
 import { setImportGen } from "./generators/import";
 import { setStatementsGen } from "./generators/statements";
@@ -26,6 +27,7 @@ import { setVariablesGen } from "./generators/variables";
 import { setTurtleGen } from "./generators/turtle";
 import { setGraphGen } from "./generators/graph";
 import { setRandomGen } from "./generators/random";
+import { setPILGen } from "./generators/pil";
 
 export default class BlockEditor {
   private _blockDiv = document.getElementById("blocklyDiv")!;
@@ -176,6 +178,7 @@ export default class BlockEditor {
       "Tortue",
       "Graphique",
       "Aléatoire",
+      "Images",
     ];
     // let ids = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     let icons = [
@@ -190,6 +193,7 @@ export default class BlockEditor {
       '<i class="fa-solid fa-pen"></i>',
       '<i class="fa-solid fa-chart-pie"></i>',
       '<i class="fa-solid fa-dice"></i>',
+      '<i class="fa-solid fa-image"></i>',
     ];
 
     var category = this._toolbox.getToolboxItems();
@@ -374,6 +378,7 @@ export default class BlockEditor {
     setTurtle();
     setGraph();
     setRandom();
+    setPIL()
   }
 
   public setGenerators() {
@@ -394,6 +399,7 @@ export default class BlockEditor {
     setTurtleGen();
     setGraphGen();
     setRandomGen();
+    setPILGen()
   }
 
   public setBlocksColor() {
@@ -408,6 +414,7 @@ export default class BlockEditor {
     Blockly.Msg.TURTLE_COLOR = "#37B375";
     Blockly.Msg.GRAPH_COLOR = "#457389";
     Blockly.Msg.RANDOM_COLOR = "#f5a623";
+    Blockly.Msg.PIL_COLOR = "#81A0EB";
 
     // console.log(Blockly.Msg);
     // block.setColour('%{BKY_EVERYTHING_HUE}');

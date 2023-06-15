@@ -67,4 +67,15 @@ export function setImport() {
       this.setHelpUrl("https://matplotlib.org/");
     },
   };
+
+  Blockly.Blocks["import_pil"] = {
+    init: function () {
+      this.appendDummyInput().appendField("from PIL import Image");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("%{BKY_IMPORT_COLOR}");
+      this.setTooltip("Importation de la bibliothèque PIL.Image");
+      this.setHelpUrl("https://pillow.readthedocs.io/en/stable/");
+    },
+  };
 }
