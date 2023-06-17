@@ -8,10 +8,6 @@ let toolbox = {
       contents: [
         {
           kind: "block",
-          type: "factory_base",
-        },
-        {
-          kind: "block",
           type: "import_numpy",
         },
         {
