@@ -117,29 +117,29 @@ export default class BlockEditor {
   }
 
   /**
-   * Patches the right bump of the Blockly blocks.
+   * Patches the right bump of the Blockly blocks in zelos theme.
+   * These patches require modifications to the Blockly lib :
+   * blockly/core/renderers/zelos/info.d.ts with adjustXPosition_() from protected to public
+   * blockly/core/renderers/common/info.d.ts with makeSpacerRow_ from protected to public, and constants_ from protected to public
+   * Better way to do it ? Extend class maybe ?
    * @returns {void}
    */
   public patchRightBump() {
-    // const origMakeSpacerRow_ =
-    //   Blockly.blockRendering.RenderInfo.prototype.makeSpacerRow_;
-    // Blockly.blockRendering.RenderInfo.prototype.makeSpacerRow_ = function () {
-    //   const spacer = origMakeSpacerRow_.apply(this, [
-    //     this.topRow,
-    //     this.bottomRow,
 
-    //   ]);
-    //   if (
-    //     spacer.followsStatement &&
-    //     this.bottomRow.minHeight >= this.constants_.FIELD_BORDER_RECT_HEIGHT
-    //   ) {
-    //     spacer.height += this.constants_.NOTCH_HEIGHT;
-    //   }
-    //   return spacer;
-    // };
-
+    // Removes the auto x adjust of the block's content
     Blockly.zelos.RenderInfo.prototype.adjustXPosition_ = function () {
       // do nothing
+    };
+    
+    // Patches the vertical spacing inside blocks to avoid clipping (not working well, creating a vertical shift between start and end of a statement block... wtf ?)
+    const origMakeSpacerRow_ = Blockly.blockRendering.RenderInfo.prototype.makeSpacerRow_;
+    Blockly.blockRendering.RenderInfo.prototype.makeSpacerRow_ = function () {
+      const spacer = origMakeSpacerRow_.apply(this, [
+        this.topRow,
+        this.bottomRow,
+      ]);
+      spacer.height/=4;
+      return spacer;
     };
   }
 
@@ -428,3 +428,5 @@ export default class BlockEditor {
     Blockly.Msg.PIL_COLOR = "#81A0EB";
   }
 }
+
+
