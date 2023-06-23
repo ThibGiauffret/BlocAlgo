@@ -1,3 +1,10 @@
+/**
+ * The blocks.ts file defines custom Blockly blocks and code generators used 
+ * in the workspace. It imports the necessary modules and functions, and exports 
+ * a BlockEditor class. The file also defines the toolbox used in the 
+ * workspace, which contains the custom blocks organized by category.
+ */
+
 import * as Blockly from "../lib/blockly";
 // import * as Fr from "blockly/msg/fr";
 import * as Custom from "./fr";
@@ -39,6 +46,11 @@ export default class BlockEditor {
   private _style: any;
   private _toolboxFlag = true;
 
+  /**
+   * Initializes the Blockly workspace.
+   * @async
+   * @returns {Promise<void>} A Promise that resolves when the workspace is initialized.
+   */
   public async init() {
     this.setDarkTheme();
     this.patchRightBump();
@@ -82,8 +94,6 @@ export default class BlockEditor {
 
     pythonGenerator.init(this._workspace);
 
-    // window.addEventListener("resize", this.onresize, false);
-    // this.onresize();
     this.setBlocksColor();
     this.toolboxStyle();
     this.initTooltips();
@@ -91,22 +101,25 @@ export default class BlockEditor {
     this.setGenerators();
 
     this._injectionDiv = this._workspace.getInjectionDiv();
-    // add class to the injection div
     this._injectionDiv.classList.add("rounded-b-md");
   }
 
+  /**
+   * Adds a new base block to the Blockly workspace.
+   * @returns {void}
+   */
   public addBase() {
     var newBlock = this._workspace.newBlock("factory_base");
-    // center workspace on new block and put on top
-
     newBlock.initSvg();
     newBlock.render();
-
     this._workspace.centerOnBlock(newBlock.id);
-
     newBlock.moveBy(0, -100);
   }
 
+  /**
+   * Patches the right bump of the Blockly blocks.
+   * @returns {void}
+   */
   public patchRightBump() {
     // const origMakeSpacerRow_ =
     //   Blockly.blockRendering.RenderInfo.prototype.makeSpacerRow_;
@@ -130,6 +143,10 @@ export default class BlockEditor {
     };
   }
 
+  /**
+   * Sets the Blockly workspace to use a custom dark theme.
+   * @returns {void}
+   */
   public setDarkTheme() {
     this._customDark = Blockly.Theme.defineTheme("customdark", {
       name: "customdark",
@@ -155,16 +172,24 @@ export default class BlockEditor {
     });
   }
 
+  /**
+   * Changes the Blockly workspace theme to the specified theme.
+   * @param {string} theme - The name of the theme to change to ("light" or "dark").
+   * @returns {void}
+   */
   public changeTheme(theme: string) {
     if (theme === "light") {
       this._style = Blockly.Themes.Classic;
     } else if (theme === "dark") {
       this._style = this._customDark;
     }
-
     this._workspace.setTheme(this._style);
   }
 
+  /**
+   * Changes the Blockly workspace theme to the specified theme.
+   * @returns {void}
+   */
   public toolboxStyle() {
     let titres = [
       "Bibliothèques",
@@ -180,7 +205,6 @@ export default class BlockEditor {
       "Aléatoire",
       "Images",
     ];
-    // let ids = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     let icons = [
       '<i class="fa-solid fa-file-arrow-down"></i>',
       '<i class="fa-solid fa-plus"></i>',
@@ -195,9 +219,7 @@ export default class BlockEditor {
       '<i class="fa-solid fa-dice"></i>',
       '<i class="fa-solid fa-image"></i>',
     ];
-
     var category = this._toolbox.getToolboxItems();
-
     for (var i = 0; i < category.length; i++) {
       if (category[i].rowDiv_ != undefined) {
         category[i].rowDiv_.getElementsByClassName(
@@ -209,56 +231,28 @@ export default class BlockEditor {
           '">' +
           titres[i] +
           "</span>";
-
-        // change height of category
-        // category[i].rowDiv_.style.height = "30px";
-        // change padding of category
-        // category[i].rowDiv_.style.padding = "0px 0px 0px 10px";
-        // add style to the category
-        // change color of text
-
-        // category[i].rowDiv_.getElementsByClassName(
-        //   "blocklyTreeLabel"
-        // )[0].style.color = "white";
-        // category[i].rowDiv_
-        //   .getElementsByClassName("blocklyTreeLabel")[0]
-        //   .classList.add(
-        //     // float left
-        //     "float-left"
-        //   );
-
-        // //remove style
-        // category[i].rowDiv_
-        //   .getElementsByClassName("blocklyTreeLabel")[0]
-        //   .removeAttribute("style");
-        //set class mt-1 md:space-x-1 space-y-1 md:space-y-0 mb-4
       }
     }
-
-    // category.hide();
   }
 
+  /**
+   * Generates code from the Blockly workspace.
+   * @returns {void}
+   */
   public getCode() {
     this._code = "";
-
-    // put the function_def blocks at the top of the code
     const functionDefBlocks = this._workspace
       .getTopBlocks(true)
       .filter((block) => block.type === "function_def");
-
     functionDefBlocks.map((block) => {
       // get code from block function_def even if it is orphan
       const code = pythonGenerator.blockToCode(block);
       // add to this._code
       this._code += code;
     });
-
     const otherBlocks = this._workspace
       .getTopBlocks(true)
       .filter((block) => block.type !== "function_def");
-
-    // console.log(allBlocks);
-
     // generate code from allBlocks with blockToCode
     otherBlocks.map((block) => {
       // get code from block function_def even if it is orphan
@@ -266,26 +260,27 @@ export default class BlockEditor {
       // add to this._code
       this._code += code;
     });
-
     return this._code;
-
-    // this._code = pythonGenerator.workspaceToCode(this._workspace);
-    // return this._code;
   }
 
+
+  /**
+   * Downloads the Blockly workspace as an XML string.
+   * @returns {string} The XML string representing the current state of the workspace.
+   */
   public download() {
-    // const serializer = new Blockly.serialization.blocks.BlockSerializer();
-    // const state = serializer.save(this._workspace);
-    // return state;
     var xml = Blockly.Xml.workspaceToDom(this._workspace);
     var xml_text = Blockly.Xml.domToText(xml);
     return xml_text;
   }
 
+  /**
+   * Uploads the Blockly workspace state from an XML string.
+   * @param {any} state - The XML string representing the state of the workspace to upload.
+   * @returns {void}
+   */
   public upload(state: any) {
     this._workspace.clear();
-    // const serializer = new Blockly.serialization.blocks.BlockSerializer();
-    // serializer.load(state, this._workspace);
     var xml = Blockly.Xml.textToDom(state);
     Blockly.Xml.domToWorkspace(xml, this._workspace);
     // set workspace center to the top block location
@@ -296,10 +291,13 @@ export default class BlockEditor {
       this._workspace.scrollX = -topBlockXY.x;
       this._workspace.scrollY = -topBlockXY.y;
     }
-
     this._workspace.getTopBlocks(true)[0].moveBy(50, 50);
   }
 
+  /**
+   * Toggles the visibility of the Blockly toolbox.
+   * @returns {void}
+   */
   public async hideToolbox() {
     if (this._toolboxFlag === false) {
       this._toolboxFlag = true;
@@ -311,34 +309,42 @@ export default class BlockEditor {
     }
   }
 
+  /**
+   * Undoes the last action in the Blockly workspace.
+   * @returns {void}
+   */
   public async undo() {
     this._workspace.undo(false);
   }
 
+  /**
+   * Redoes the last undone action in the Blockly workspace.
+   * @returns {void}
+   */
   public async redo() {
     this._workspace.undo(true);
   }
 
+  /**
+   * Resets the Blockly workspace to its initial state.
+   * @returns {void}
+   */
   public async reset() {
     this._workspace.clear();
     this.addBase();
   }
 
+  /**
+   * Initializes custom tooltips for Blockly blocks.
+   * @returns {void}
+   */
   public async initTooltips() {
-    // Create a custom rendering function. This function will be called whenever
-    // a tooltip is shown in Blockly. The first argument is the div to render
-    // the content into. The second argument is the element to show the tooltip
-    // for.
     const customTooltip = function (div: any, element: any) {
       if (element instanceof Blockly.BlockSvg) {
-        // You can access the block being moused over.
-        // Here we get the color of the block to set the background color.
-        // add class ui-tooltip
         div.classList.add("ui-tooltip");
       }
       const tip = Blockly.Tooltip.getTooltipOfObject(element);
       const text = document.createElement("div");
-      // change text color
       text.style.color = "white";
       text.style.fontSize = "14px";
       text.style.padding = "2px";
@@ -348,13 +354,14 @@ export default class BlockEditor {
       container.appendChild(text);
       div.appendChild(container);
     };
-    // Register the function in the Blockly.Tooltip so that Blockly calls it
-    // when needed.
     Blockly.Tooltip.setCustomTooltip(customTooltip);
   }
 
+  /**
+   * Defines the custom Blockly blocks used in the workspace.
+   * @returns {void}
+   */
   public setBlocks() {
-    // Base
     Blockly.Blocks["factory_base"] = {
       init: function () {
         this.setDeletable(true);
@@ -366,8 +373,6 @@ export default class BlockEditor {
         this.setColour("#F97316");
       },
     };
-
-    // Importation
     setImport();
     setStatements();
     setLogic();
@@ -381,13 +386,15 @@ export default class BlockEditor {
     setPIL()
   }
 
+  /**
+   * Defines the custom code generators used in the workspace.
+   * @returns {void}
+   */
   public setGenerators() {
-    // Base
     pythonGenerator["factory_base"] = function (block: any) {
       var code = "# Début du programme\r\n";
       return code;
     };
-
     setImportGen();
     setStatementsGen();
     setLogicGen();
@@ -402,6 +409,10 @@ export default class BlockEditor {
     setPILGen()
   }
 
+  /**
+   * Defines the custom colors used for Blockly blocks.
+   * @returns {void}
+   */
   public setBlocksColor() {
     Blockly.Msg.IMPORT_COLOR = "#42af55";
     Blockly.Msg.STATEMENTS_COLOR = "#388dc8";
@@ -415,8 +426,5 @@ export default class BlockEditor {
     Blockly.Msg.GRAPH_COLOR = "#457389";
     Blockly.Msg.RANDOM_COLOR = "#f5a623";
     Blockly.Msg.PIL_COLOR = "#81A0EB";
-
-    // console.log(Blockly.Msg);
-    // block.setColour('%{BKY_EVERYTHING_HUE}');
   }
 }
