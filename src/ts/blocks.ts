@@ -132,15 +132,15 @@ export default class BlockEditor {
     };
     
     // Patches the vertical spacing inside blocks to avoid clipping (not working well, creating a vertical shift between start and end of a statement block... wtf ?)
-    const origMakeSpacerRow_ = Blockly.blockRendering.RenderInfo.prototype.makeSpacerRow_;
-    Blockly.blockRendering.RenderInfo.prototype.makeSpacerRow_ = function () {
-      const spacer = origMakeSpacerRow_.apply(this, [
-        this.topRow,
-        this.bottomRow,
-      ]);
-      spacer.height/=4;
-      return spacer;
-    };
+    // const origMakeSpacerRow_ = Blockly.blockRendering.RenderInfo.prototype.makeSpacerRow_;
+    // Blockly.blockRendering.RenderInfo.prototype.makeSpacerRow_ = function () {
+    //   const spacer = origMakeSpacerRow_.apply(this, [
+    //     this.topRow,
+    //     this.bottomRow,
+    //   ]);
+    //   spacer.height/=4;
+    //   return spacer;
+    // };
   }
 
   /**
