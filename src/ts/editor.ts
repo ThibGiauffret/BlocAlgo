@@ -1,3 +1,11 @@
+/**
+ * The editor.ts file exports an Editor class that initializes and manages the Ace editor 
+ * used in the GUI. It imports the GUI class and the necessary dependencies from the Ace 
+ * editor library. The Editor class has methods for getting the kernel, initializing the 
+ * Ace editor, and resizing the editor. Overall, this file is responsible for managing the 
+ * Ace editor used in the GUI.
+ */
+
 import GUI from "./gui";
 
 import ace from "ace-builds";
@@ -42,14 +50,15 @@ export default class Editor {
       fontSize: "12pt",
     });
 
-    // editor's completion
-
-    // removing all completers and keeping track of local completer
+    /**
+     * Editor's completion
+     */
+    // Removing all completers and keeping track of local completer
     const localCompleter = this._aceEditor.completers[1]; // any hint to detect this dynamically?
     this._aceEditor.completers = [
       {
         getCompletions: (editor, session, pos, prefix, callback) => {
-          // get local completions (from editor, not namespace)
+          // Get local completions (from editor, not namespace)
           let locals: any[] = [];
           localCompleter.getCompletions(
             editor,
@@ -60,7 +69,7 @@ export default class Editor {
               locals = completions;
             }
           );
-          // recover editor content up to position
+          // Recover editor content up to position
           let lines = editor.getValue().split("\n");
           lines = lines.slice(0, pos.row + 1);
           lines[lines.length - 1] = lines[lines.length - 1].slice(
@@ -73,12 +82,12 @@ export default class Editor {
           if (!kernelCompletions?.length) return;
           const start = kernelCompletions[1];
           let completions = kernelCompletions[0];
-          // removing prefix
+          // Removing prefix
           const basthon_prefix = src.slice(start, -prefix.length);
           completions = completions.map((c: string) =>
             c.slice(basthon_prefix.length)
           );
-          // union with local completions
+          // Union with local completions
           const completionsSet = new Set<string>(completions);
           for (let c of locals) {
             c = c.value;
@@ -86,7 +95,7 @@ export default class Editor {
               completionsSet.add(c);
           }
 
-          // rendering
+          // Rendering
           callback(
             null,
             [...completionsSet].map((value: string) => ({
@@ -117,9 +126,13 @@ export default class Editor {
     return this._aceEditor.getValue();
   }
 
+  /**
+   * Resize the editor
+   */
   public resize() {
     return this._aceEditor.resize();
   }
+
   /**
    * Pass events to Ace editor.
    */
