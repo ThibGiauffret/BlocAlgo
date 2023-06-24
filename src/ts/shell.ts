@@ -1,3 +1,11 @@
+/**
+ * The shell.ts file exports a Shell class that manages the terminal shell in the GUI. 
+ * It imports the jquery, jquery.terminal, and GUI classes. The Shell class has methods 
+ * for getting the kernel, getting the DOM element, and mimicking CPython's REPL banner. 
+ * It also has a buffer to handle multiline shell input and a flag to indicate whether the 
+ * program is waiting for user input during execution.
+ */
+
 import $ from "jquery";
 import "jquery.terminal";
 import "jquery.terminal/css/jquery.terminal.css";
