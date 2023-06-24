@@ -1,4 +1,4 @@
-import * as Blockly from "../../lib/blockly";
+import * as Blockly from "blockly";
 
 export function setTurtle() {
   // Turtle create

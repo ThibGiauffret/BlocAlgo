@@ -1,6 +1,6 @@
 //  Variables
-import * as Blockly from "../../lib/blockly";
-import { pythonGenerator } from "../../lib/blockly/python";
+import * as Blockly from "blockly";
+import { pythonGenerator } from "blockly/python";
 
 export function setVariablesGen() {
   pythonGenerator["math_change"] = function (block: any) {

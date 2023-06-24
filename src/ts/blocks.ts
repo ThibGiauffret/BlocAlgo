@@ -5,10 +5,10 @@
  * workspace, which contains the custom blocks organized by category.
  */
 
-import * as Blockly from "../lib/blockly";
+import * as Blockly from "blockly";
 // import * as Fr from "blockly/msg/fr";
 import * as Custom from "./fr";
-import { pythonGenerator } from "../lib/blockly/python";
+import { pythonGenerator } from "blockly/python";
 import { toolbox } from "./blocks/toolbox";
 
 import { setImport } from "./blocks/import";
@@ -121,7 +121,7 @@ export default class BlockEditor {
    * These patches require modifications to the Blockly lib :
    * blockly/core/renderers/zelos/info.d.ts with adjustXPosition_() from protected to public
    * blockly/core/renderers/common/info.d.ts with makeSpacerRow_ from protected to public, and constants_ from protected to public
-   * Better way to do it ? Extend class maybe ?
+   * These modification should be done with patch-package on postinstall via npm install.
    * @returns {void}
    */
   public patchRightBump() {

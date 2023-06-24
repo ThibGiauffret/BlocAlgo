@@ -1,0 +1,35 @@
+diff --git a/node_modules/blockly/core/renderers/common/info.d.ts b/node_modules/blockly/core/renderers/common/info.d.ts
+index f044fed..7607dce 100644
+--- a/node_modules/blockly/core/renderers/common/info.d.ts
++++ b/node_modules/blockly/core/renderers/common/info.d.ts
+@@ -26,7 +26,7 @@ import type { Renderer } from './renderer.js';
+  */
+ export declare class RenderInfo {
+     block_: BlockSvg;
+-    protected constants_: ConstantProvider;
++    public constants_: ConstantProvider;
+     outputConnection: OutputConnection | null;
+     isInline: boolean;
+     isCollapsed: boolean;
+@@ -166,7 +166,7 @@ export declare class RenderInfo {
+      * @param next The next row.
+      * @returns The newly created spacer row.
+      */
+-    protected makeSpacerRow_(prev: Row, next: Row): SpacerRow;
++    public makeSpacerRow_(prev: Row, next: Row): SpacerRow;
+     /**
+      * Calculate the width of a spacer row.
+      *
+diff --git a/node_modules/blockly/core/renderers/zelos/info.d.ts b/node_modules/blockly/core/renderers/zelos/info.d.ts
+index 9443069..6c7972e 100644
+--- a/node_modules/blockly/core/renderers/zelos/info.d.ts
++++ b/node_modules/blockly/core/renderers/zelos/info.d.ts
+@@ -59,7 +59,7 @@ export declare class RenderInfo extends BaseRenderInfo {
+      * row past the notch position.  This must be called before `computeBounds`
+      * is called.
+      */
+-    protected adjustXPosition_(): void;
++    public adjustXPosition_(): void;
+     /**
+      * Finalize the output connection info.  In particular, set the height of the
+      * output connection to match that of the block.  For the right side, add a

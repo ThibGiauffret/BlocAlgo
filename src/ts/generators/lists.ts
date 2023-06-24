@@ -1,5 +1,5 @@
-import * as Blockly from "../../lib/blockly";
-import { pythonGenerator } from "../../lib/blockly/python";
+import * as Blockly from "blockly";
+import { pythonGenerator } from "blockly/python";
 
 export function setListsGen() {
   pythonGenerator["list_create"] = function (block: any) {
