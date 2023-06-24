@@ -1,3 +1,9 @@
+/**
+ * The graphics.ts file exports a Graphics class that manages the graphics output in 
+ * the GUI. The Graphics class has methods for getting the DOM element, initializing 
+ * the graphics output, and displaying data from the kernel.
+ */
+
 import GUI from "./gui";
 
 declare global {
