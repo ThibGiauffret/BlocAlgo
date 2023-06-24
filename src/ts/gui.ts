@@ -1,3 +1,11 @@
+/**
+ * The gui.ts file is the main entry point for the graphical user interface (GUI) of the
+ * application. It imports various libraries and modules that are used to create the GUI,
+ * including notie, jquery, jquery-ui, fontawesome, open-sans, and @basthon/gui-base. It 
+ * also imports several local modules that define the behavior of the different components
+ * of the GUI, such as the shell, editor, graphics, and block editor.
+ */
+
 // notie
 import * as notie from "notie";
 import "notie/dist/notie.css";
@@ -5,19 +13,25 @@ import "notie/dist/notie.css";
 import $ from "jquery";
 import "jquery-ui-dist/jquery-ui";
 import "jquery-ui-dist/jquery-ui.css";
-// fontawesome
 import "@fortawesome/fontawesome-free/css/all.css";
 // open-sans
 import "@fontsource/open-sans";
 // basthon
 import { GUIBase, GUIOptions } from "@basthon/gui-base";
-// local
+// locals
 import Shell from "./shell";
 import Editor from "./editor";
 import Graphics from "./graphics";
 import BlockEditor from "./blocks";
 import "../css/style.css";
 
+
+/**
+ * The GUI class is the main class that represents the graphical user interface (GUI) of the
+ * application. It extends the GUIBase class from the @basthon/gui-base module and provides
+ * the implementation for the different components of the GUI, such as the shell, editor, 
+ * graphics, and block editor.
+ */
 export default class GUI extends GUIBase {
   private _shell: Shell;
   private _editor: Editor;
@@ -158,9 +172,16 @@ export default class GUI extends GUIBase {
     });
   }
 
+  /**
+   * The setupUI method is a protected method of the GUI class that sets up the user interface
+   * (UI) of the application. It initializes the different components of the GUI, loads the 
+   * script to execute, and adds event listeners to the different components.
+   * @param options 
+   */
   protected async setupUI(options: any) {
     await super.setupUI(options);
 
+    // Init of the components
     await Promise.all([
       this._editor.init(),
       this._shell.init(),
@@ -177,8 +198,8 @@ export default class GUI extends GUIBase {
       await this.load();
     }
 
+    // Triggers a code update when mouse is up on blockly workspace div
     this._blockEditor._workspace.addChangeListener(() => {
-      // trigger only on mouse up
       if (this._blockEditor._workspace.isDragging()) return;
       this.updateCode();
     });
@@ -198,13 +219,12 @@ export default class GUI extends GUIBase {
     });
 
     observer.observe(graphicDiv, {
-      // attributes: true,
       childList: true,
       subtree: true,
     });
 
+    // Event listeners for buttons
     let button: HTMLElement | null;
-    // get element by class name "theme-toogle"
     button = document.getElementsByClassName("theme-toggle")[0] as HTMLElement;
     button?.addEventListener("click", () => this.updateTheme());
 
@@ -256,42 +276,22 @@ export default class GUI extends GUIBase {
     button = document.getElementById("download_script") as HTMLElement;
     button?.addEventListener("click", () => this.downloadScript());
 
-    /* connecting buttons */
     // run
     button = document.getElementById("run1") as HTMLElement;
     button?.addEventListener("click", () => this.runScript());
     button = document.getElementById("run2") as HTMLElement;
     button?.addEventListener("click", () => this.runScript());
-    // open
-    button = document.getElementById("open");
-    button?.addEventListener("click", () => this.openFile());
-    button?.addEventListener("click", () => this.share());
-    // rolling back to previous version
-    button = document.getElementById("rollback");
-    button?.addEventListener("click", async () => {
-      const content = await this.selectCheckpoint();
-      if (content != null) this.setContent(content);
-    });
-
-    // raz
+    // reset
     button = document.getElementById("raz");
     button?.addEventListener("click", () => this.restart());
-    // show shell
-    button = document.getElementById("btn_shell");
-    button?.addEventListener("click", () => this.showShell());
     // show graph
     button = document.getElementById("btn_graph_view");
     button?.addEventListener("click", () => this.showGraph());
     // view switch
-    // button = document.getElementById("switch");
-    // button?.addEventListener("click", () => this.switchView());
-    // single/double vew
     button = document.getElementById("hide_console");
     button?.addEventListener("click", () => this.hideConsole());
     button = document.getElementById("hide_editor");
     button?.addEventListener("click", () => this.hideEditor());
-    // button = document.getElementById("show-editor-console");
-    // button?.addEventListener("click", () => this.showEditorConsole());
 
     /* binding ctrl+s */
     window.addEventListener("keydown", (event) => {
@@ -340,14 +340,23 @@ export default class GUI extends GUIBase {
     this.initTooltips();
   }
 
+  /**
+   * Show loader screen
+   */
   public async showLoader() {
     document.getElementById("loader")!.style.display = "block";
   }
 
+  /**
+   * Hide loader screen
+   */
   public async hideLoader() {
     document.getElementById("loader")!.style.display = "none";
   }
 
+  /**
+ * Initialize the tooltips for the different components of the GUI.
+ */
   public async initTooltips() {
     ($(document) as any).tooltip({
       position: {
@@ -361,19 +370,18 @@ export default class GUI extends GUIBase {
     });
   }
 
+  /**
+   * Update the code in the editor with the code from the block editor.
+   */  
   public async updateCode() {
     await this.loaded();
     const code = this._blockEditor.getCode();
-    // remove all lines before the first line of code before line containing "# Début du programme"
-    // const firstLine = code
-    //   .split("\n")
-    //   .findIndex((line) => line.includes("# Début du programme"));
-    // const codeWithoutHeader = code.split("\n").slice(firstLine).join("\n");
-
-    // this._editor.setContent(codeWithoutHeader);
     this._editor.setContent(code);
   }
 
+  /**
+   * Initialize the theme for the GUI.
+   */
   public async initTheme() {
     var themeToggleDarkIcon1 = document.getElementsByClassName(
       "theme-toggle-dark-icon"
@@ -400,6 +408,9 @@ export default class GUI extends GUIBase {
     }
   }
 
+  /**
+   * Update the theme of the GUI.
+   */  
   public async updateTheme() {
     var themeToggleDarkIcon1 = document.getElementsByClassName(
       "theme-toggle-dark-icon"
@@ -446,6 +457,9 @@ export default class GUI extends GUIBase {
     }
   }
 
+  /**
+   * Download the current workspace as a JSON file.
+   */
   public async downloadWorkspace() {
     let response = this._blockEditor.download();
     // download a json file with response
@@ -460,6 +474,9 @@ export default class GUI extends GUIBase {
     downloadAnchorNode.remove();
   }
 
+  /**
+   * Download the current script as a Python file.
+   */
   public async downloadScript() {
     let code = this._editor.getContent();
     // a py file with code, NO JSON THERE
@@ -472,6 +489,9 @@ export default class GUI extends GUIBase {
     downloadAnchorNode.remove();
   }
 
+  /**
+   * Show or hide the import workspace modal.
+   */
   public async showImportWorkspaceModal() {
     let modal = document.getElementById("import_modal")!;
     if (modal?.classList.contains("hidden")) {
@@ -481,11 +501,17 @@ export default class GUI extends GUIBase {
     }
   }
 
+  /**
+   * Hide the import workspace modal.
+   */
   public async hideImportWorkspaceModal() {
     let modal = document.getElementById("import_modal")!;
     modal.classList.add("hidden");
   }
 
+  /**
+   * Import a workspace from a JSON file.
+   */
   public async importWorkspace() {
     let fileInput = document.getElementById("import_file") as HTMLInputElement;
     let file = fileInput.files![0];
@@ -519,6 +545,9 @@ export default class GUI extends GUIBase {
     };
   }
 
+  /**
+   * Show or hide the add modal.
+   */
   public async showAddModal() {
     let modal = document.getElementById("add_modal")!;
     if (modal?.classList.contains("hidden")) {
@@ -528,13 +557,18 @@ export default class GUI extends GUIBase {
     }
   }
 
+  /**
+   * Hides the add modal.
+   */
   public async hideAddModal() {
     let modal = document.getElementById("add_modal")!;
     modal.classList.add("hidden");
   }
 
+  /**
+   * Import and add a file to the workspace.
+   */
   public async importAddFile() {
-
     let fileInput = document.getElementById("import_add_file") as HTMLInputElement;
     for (let file of fileInput.files!) {
       const ext = file.name.split('.').pop();
@@ -557,14 +591,13 @@ export default class GUI extends GUIBase {
           position: "bottom",
         });
         this.hideAddModal();
-
-  }
-}
-       
-        
-
+      }
+    }
   }
 
+  /**
+   * Save the current workspace to local storage.
+   */
   public async save() {
     // save the _blockEditor content in local storage
     let response = this._blockEditor.download();
@@ -578,6 +611,9 @@ export default class GUI extends GUIBase {
     });
   }
 
+  /**
+   * Load the current workspace to local storage.
+   */
   public async load() {
     // load the _blockEditor content from local storage
     let workspace = localStorage.getItem("workspace");
@@ -597,6 +633,9 @@ export default class GUI extends GUIBase {
     }
   }
 
+  /**
+   * Load content from a URL parameter ('from') in the current window's URL.
+   */
   public async loadFromURL() {
     //  get the from parameter in the url
     let url = new URL(window.location.href);
@@ -624,17 +663,27 @@ export default class GUI extends GUIBase {
     }
   }
 
+  /**
+   * Undo the last block operation in the block editor.
+   */
   public async undoBlock() {
     this._blockEditor.undo();
   }
 
+  /**
+   * Redo the last block operation in the block editor.
+   */
   public async redoBlock() {
     this._blockEditor.redo();
   }
 
+  /**
+   * Reset the block editor.
+   */
   public async resetBlock() {
     this._blockEditor.reset();
   }
+
   /**
    * Run the editor script in the shell.
    */
@@ -646,7 +695,7 @@ export default class GUI extends GUIBase {
   }
 
   /**
-   * RAZ function.
+   * Restart function
    */
   public restart() {
     this.kernelRestart();
@@ -655,8 +704,7 @@ export default class GUI extends GUIBase {
   }
 
   /**
-   * Open *.py file by asking user what to do:
-   * load in editor or put on (emulated) local filesystem.
+   * Open *.py file by asking user what to do: load in editor or put on (emulated) local filesystem (not used ?).
    */
   public async openModuleFile(file: File) {
     this.confirm(
@@ -676,7 +724,7 @@ export default class GUI extends GUIBase {
   /**
    * Opening file: If it has kernel extension, loading it in the editor
    * or put on (emulated) local filesystem (user is asked to),
-   * otherwise, loading it in the local filesystem.
+   * otherwise, loading it in the local filesystem (not used ?).
    */
   public async openFile() {
     await this.kernelLoader.kernelAvailable();
@@ -688,6 +736,9 @@ export default class GUI extends GUIBase {
     return await this._openFile(callbacks);
   }
 
+  /**
+   * Show or hide the mobile menu.
+   */
   public async showMenu() {
     var menu = document.getElementById("mobile-menu")!;
     if (menu.style.display === "block") {
@@ -697,10 +748,16 @@ export default class GUI extends GUIBase {
     }
   }
 
+  /**
+   * Hide the blockly toolbox.
+   */
   public async hideToolbox() {
     this._blockEditor.hideToolbox();
   }
 
+  /**
+   * Hide or show the console output.
+   */
   public hideConsole() {
     this._editor.resize();
     // get div with id output
@@ -752,7 +809,7 @@ export default class GUI extends GUIBase {
   }
 
   /**
-   * Displaying console alone.
+   * Display console alone.
    */
   public hideEditor() {
     this._editor.resize();
