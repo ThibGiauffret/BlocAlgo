@@ -1,15 +1,17 @@
 import * as Blockly from "blockly";
 
 export function setFunctions() {
-  // Fonctions
-  // Définition d'une fonction avec statement
+  // Function definition
+  var function_def = {
+    "message0": Blockly.Msg['function_def'],
+    "args0": [
+      {"type": "input_value", "name": "function_name", "check": null},
+      {"type": "input_value", "name": "function_params", "check": null}
+    ]
+  };
   Blockly.Blocks["function_def"] = {
     init: function () {
-      this.appendDummyInput().appendField("def ");
-      this.appendValueInput("function_name").setCheck(null);
-      this.appendDummyInput().appendField(" (");
-      this.appendValueInput("function_params").setCheck(null);
-      this.appendDummyInput().appendField(") :");
+      this.jsonInit(function_def);
       this.appendStatementInput("function_statements").setCheck(null);
       // this.setPreviousStatement(true, null);
       // this.setNextStatement(true, null);
@@ -21,7 +23,7 @@ export function setFunctions() {
       this.updateShadow();
     },
     updateShadow: function () {
-      // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+      
       var connection = this.getInput("function_params").connection;
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
@@ -46,12 +48,17 @@ export function setFunctions() {
     },
   };
 
+  // Function call
+  var function_call = {
+    "message0": Blockly.Msg['function_call'],
+    "args0": [
+      {"type": "input_value", "name": "function_name", "check": null},
+      {"type": "input_value", "name": "function_params", "check": null}
+    ]
+  };
   Blockly.Blocks["function_call"] = {
     init: function () {
-      this.appendValueInput("function_name").setCheck(null);
-      this.appendDummyInput().appendField(" (");
-      this.appendValueInput("function_params").setCheck(null);
-      this.appendDummyInput().appendField(")");
+      this.jsonInit(function_call);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_FUNCTIONS_COLOR}");
@@ -62,7 +69,7 @@ export function setFunctions() {
       this.updateShadow();
     },
     updateShadow: function () {
-      // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+      
       var connection = this.getInput("function_params").connection;
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
@@ -87,11 +94,16 @@ export function setFunctions() {
     },
   };
 
-  // return
+  // Return
+  var function_return = {
+    "message0": Blockly.Msg['function_return'],
+    "args0": [
+      {"type": "input_value", "name": "return_value", "check": null},
+    ]
+  };
   Blockly.Blocks["function_return"] = {
     init: function () {
-      this.appendDummyInput().appendField("return");
-      this.appendValueInput("return_value").setCheck(null);
+      this.jsonInit(function_return);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setInputsInline(true);

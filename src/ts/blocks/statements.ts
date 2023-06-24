@@ -28,12 +28,13 @@ export function setStatements() {
     },
   };
 
+  var time_sleep = {
+    message0: Blockly.Msg["time_sleep"],
+    args0: [{ type: "field_number", name: "time_value", value: 0 }],
+  };
   Blockly.Blocks["time_sleep"] = {
     init: function () {
-      this.appendDummyInput()
-        .appendField("time.sleep (")
-        .appendField(new Blockly.FieldNumber(0), "time_value")
-        .appendField(")");
+      this.jsonInit(time_sleep);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_STATEMENTS_COLOR}");
@@ -42,11 +43,13 @@ export function setStatements() {
     },
   };
 
+  var print = {
+    message0: Blockly.Msg["print"],
+    args0: [{ type: "input_value", name: "PRINT", check: null }],
+  };
   Blockly.Blocks["print"] = {
     init: function () {
-      this.appendDummyInput().appendField("print (");
-      this.appendValueInput("PRINT").setCheck(null);
-      this.appendDummyInput().appendField(")");
+      this.jsonInit(print);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_STATEMENTS_COLOR}");
@@ -56,9 +59,7 @@ export function setStatements() {
       );
       this.updateShadow();
     },
-
     updateShadow: function () {
-      // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
       var connection = this.getInput("PRINT").connection;
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
@@ -72,13 +73,16 @@ export function setStatements() {
     },
   };
 
+  var input = {
+    message0: Blockly.Msg["input"],
+    args0: [
+      { type: "input_value", name: "input_var", check: null },
+      { type: "field_input", name: "input_message", text: "" },
+    ],
+  };
   Blockly.Blocks["input"] = {
     init: function () {
-      this.appendValueInput("input_var").setCheck(null);
-      this.appendDummyInput()
-        .appendField(' = input ("')
-        .appendField(new Blockly.FieldTextInput(""), "input_message")
-        .appendField('")');
+      this.jsonInit(input);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_STATEMENTS_COLOR}");
@@ -91,7 +95,7 @@ export function setStatements() {
 
   Blockly.Blocks["pass"] = {
     init: function () {
-      this.appendDummyInput().appendField("pass");
+      this.appendDummyInput().appendField(Blockly.Msg["pass"]);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_STATEMENTS_COLOR}");
@@ -102,11 +106,13 @@ export function setStatements() {
     },
   };
 
+  var len = {
+    message0: Blockly.Msg["len"],
+    args0: [{ type: "input_value", name: "len_value", check: null }],
+  };
   Blockly.Blocks["len"] = {
     init: function () {
-      this.appendDummyInput().appendField("len (");
-      this.appendValueInput("len_value").setCheck(null);
-      this.appendDummyInput().appendField(")");
+      this.jsonInit(len);
       this.setOutput(true, null);
       this.setColour("%{BKY_STATEMENTS_COLOR}");
       this.setTooltip(
@@ -119,11 +125,13 @@ export function setStatements() {
   };
 
   // int conversion block
+  var int = {
+    message0: Blockly.Msg["int"],
+    args0: [{ type: "input_value", name: "int_value", check: null }],
+  };
   Blockly.Blocks["int"] = {
     init: function () {
-      this.appendDummyInput().appendField("int (");
-      this.appendValueInput("int_value").setCheck(null);
-      this.appendDummyInput().appendField(")");
+      this.jsonInit(int);
       this.setOutput(true, null);
       this.setColour("%{BKY_STATEMENTS_COLOR}");
       this.setTooltip("Renvoie la valeur entière d'un nombre");
@@ -134,11 +142,13 @@ export function setStatements() {
   };
 
   // float conversion block
+  var float = {
+    message0: Blockly.Msg["float"],
+    args0: [{ type: "input_value", name: "float_value", check: null }],
+  };
   Blockly.Blocks["float"] = {
     init: function () {
-      this.appendDummyInput().appendField("float (");
-      this.appendValueInput("float_value").setCheck(null);
-      this.appendDummyInput().appendField(")");
+      this.jsonInit(float);
       this.setOutput(true, null);
       this.setColour("%{BKY_STATEMENTS_COLOR}");
       this.setTooltip("Renvoie la valeur décimale d'un nombre");
@@ -149,11 +159,13 @@ export function setStatements() {
   };
 
   // str conversion block
+  var str = {
+    message0: Blockly.Msg["str"],
+    args0: [{ type: "input_value", name: "str_value", check: null }],
+  };
   Blockly.Blocks["str"] = {
     init: function () {
-      this.appendDummyInput().appendField("str (");
-      this.appendValueInput("str_value").setCheck(null);
-      this.appendDummyInput().appendField(")");
+      this.jsonInit(str);
       this.setOutput(true, null);
       this.setColour("%{BKY_STATEMENTS_COLOR}");
       this.setTooltip(
@@ -166,11 +178,13 @@ export function setStatements() {
   };
 
   // list block
+  var list = {
+    message0: Blockly.Msg["list"],
+    args0: [{ type: "input_value", name: "list_value", check: null }],
+  };
   Blockly.Blocks["list"] = {
     init: function () {
-      this.appendDummyInput().appendField("list (");
-      this.appendValueInput("list_value").setCheck(null);
-      this.appendDummyInput().appendField(")");
+      this.jsonInit(list);
       this.setOutput(true, null);
       this.setColour("%{BKY_STATEMENTS_COLOR}");
       this.setTooltip("Renvoie une liste à partir de différentes valeurs");
@@ -181,11 +195,13 @@ export function setStatements() {
   };
 
   // round conversion block
+  var round = {
+    message0: Blockly.Msg["round"],
+    args0: [{ type: "input_value", name: "round_value", check: null }],
+  };
   Blockly.Blocks["round"] = {
     init: function () {
-      this.appendDummyInput().appendField("round (");
-      this.appendValueInput("round_value").setCheck(null);
-      this.appendDummyInput().appendField(")");
+      this.jsonInit(round);
       this.setOutput(true, null);
       this.setColour("%{BKY_STATEMENTS_COLOR}");
       this.setTooltip("Renvoie la valeur arrondie d'un nombre");
@@ -196,16 +212,17 @@ export function setStatements() {
   };
 
   // range block
+  var range = {
+    message0: Blockly.Msg["range"],
+    args0: [
+      { type: "field_input", name: "range_start", check: "Number" },
+      { type: "field_input", name: "range_end", check: "Number" },
+      { type: "field_input", name: "range_step", check: "Number" },
+    ],
+  };
   Blockly.Blocks["range"] = {
     init: function () {
-      this.appendDummyInput()
-        .appendField("range (")
-        .appendField(new Blockly.FieldNumber(0), "range_start")
-        .appendField(",")
-        .appendField(new Blockly.FieldNumber(10), "range_end")
-        .appendField(",")
-        .appendField(new Blockly.FieldNumber(1), "range_step")
-        .appendField(")");
+      this.jsonInit(range);
       this.setOutput(true, null);
       this.setColour("%{BKY_STATEMENTS_COLOR}");
       this.setTooltip(

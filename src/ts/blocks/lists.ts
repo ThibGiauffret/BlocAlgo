@@ -4,18 +4,16 @@ export function setLists() {
   // Listes
 
   // Création d'une liste
+  var list_create = {
+    "message0": Blockly.Msg["list_create"],
+    "args0": [
+      { "type": "field_variable", "name": "list_name", "variable": "liste" },
+      { "type": "input_value", "name": "list_values", "check": null },
+    ],
+  }
   Blockly.Blocks["list_create"] = {
     init: function () {
-      // add var
-      this.appendDummyInput().appendField(
-        new Blockly.FieldVariable("liste"),
-        "list_name"
-      );
-      this.appendDummyInput().appendField(" = [");
-      this.appendValueInput("list_values").setCheck(null);
-      this.appendDummyInput().appendField("]");
-      // inline
-      this.setInputsInline(true);
+      this.jsonInit(list_create);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_LISTS_COLOR}");
@@ -26,12 +24,12 @@ export function setLists() {
       this.updateShadow();
     },
     updateShadow: function () {
-      // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+      
       var connection = this.getInput("list_values").connection;
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
         "<xml>" +
-          '  <shadow type="value"><field name="VALUE">1,2,3,4,5</field></shadow>' +
+          '  <shadow type="value"><field name="VALUE">[1,2,3,4,5]</field></shadow>' +
           "</xml>"
       ).children[0];
       connection.setShadowDom(dom);
@@ -41,13 +39,16 @@ export function setLists() {
   };
 
   // Ajout d'un élément à une liste
+  var list_add = {
+    "message0": Blockly.Msg["list_add"],
+    "args0": [
+      { "type": "input_value", "name": "list_name", "check": null },
+      { "type": "input_value", "name": "list_value", "check": null },
+    ],
+  }
   Blockly.Blocks["list_add"] = {
     init: function () {
-      this.appendValueInput("list_name").setCheck(null);
-      this.appendDummyInput().appendField(".append (");
-      this.appendValueInput("list_value").setCheck(null);
-      this.appendDummyInput().appendField(")");
-      this.setInputsInline(true);
+      this.jsonInit(list_add);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_LISTS_COLOR}");
@@ -58,7 +59,7 @@ export function setLists() {
       this.updateShadow();
     },
     updateShadow: function () {
-      // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+      
       var connection = this.getInput("list_value").connection;
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
@@ -73,13 +74,16 @@ export function setLists() {
   };
 
   // Accès à un élément d'une liste
+  var list_get = {
+    "message0": Blockly.Msg["list_get"],
+    "args0": [
+      { "type": "input_value", "name": "list_name", "check": null },
+      { "type": "input_value", "name": "list_index", "check": "Number" },
+    ],
+  }
   Blockly.Blocks["list_get"] = {
     init: function () {
-      this.appendValueInput("list_name").setCheck(null);
-      this.appendDummyInput().appendField("[");
-      this.appendValueInput("list_index").setCheck("Number");
-      this.appendDummyInput().appendField("]");
-      this.setInputsInline(true);
+      this.jsonInit(list_get);
       this.setOutput(true, null);
       this.setColour("%{BKY_LISTS_COLOR}");
       this.setTooltip("Accès à un élément d'une liste");
@@ -89,7 +93,7 @@ export function setLists() {
       this.updateShadow();
     },
     updateShadow: function () {
-      // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+      
       var connection = this.getInput("list_index").connection;
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
@@ -104,14 +108,17 @@ export function setLists() {
   };
 
   // Modification d'un élément d'une liste
+  var list_set = {
+    "message0": Blockly.Msg["list_set"],
+    "args0": [
+      { "type": "input_value", "name": "list_name", "check": null },
+      { "type": "input_value", "name": "list_index", "check": "Number" },
+      { "type": "input_value", "name": "list_value", "check": null },
+    ],
+  }
   Blockly.Blocks["list_set"] = {
     init: function () {
-      this.appendValueInput("list_name").setCheck(null);
-      this.appendDummyInput().appendField("[");
-      this.appendValueInput("list_index").setCheck("Number");
-      this.appendDummyInput().appendField("]");
-      this.appendDummyInput().appendField(" = ");
-      this.appendValueInput("list_value").setCheck(null);
+      this.jsonInit(list_set);
       this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
@@ -123,7 +130,7 @@ export function setLists() {
       this.updateShadow();
     },
     updateShadow: function () {
-      // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+      
       var connection = this.getInput("list_index").connection;
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(

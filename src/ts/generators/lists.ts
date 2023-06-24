@@ -15,7 +15,7 @@ export function setListsGen() {
       pythonGenerator.ORDER_NONE
     );
 
-    var code = variable_var + " = [" + value + "]\r\n";
+    var code = variable_var + " = " + value + "\r\n";
     return code;
   };
 

@@ -2,11 +2,15 @@ import * as Blockly from "blockly";
 
 export function setLogic() {
   // Conditions
+  var condition_if = {
+    message0: Blockly.Msg["condition_if"],
+    args0: [
+      { type: "input_value", name: "condition", check: "Boolean" },
+    ],
+  };
   Blockly.Blocks["condition_if"] = {
     init: function () {
-      this.appendDummyInput().appendField("if");
-      this.appendValueInput("condition").setCheck("Boolean");
-      this.appendDummyInput().appendField(":");
+      this.jsonInit(condition_if);
       this.appendStatementInput("content").setCheck("Boolean");
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
@@ -22,7 +26,7 @@ export function setLogic() {
 
   Blockly.Blocks["condition_else"] = {
     init: function () {
-      this.appendDummyInput().appendField("else:");
+      this.appendDummyInput().appendField(Blockly.Msg["condition_else"]);
       this.appendStatementInput("content").setCheck("Boolean");
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
@@ -36,11 +40,15 @@ export function setLogic() {
     },
   };
 
+  var condition_elif = {
+    message0: Blockly.Msg["condition_elif"],
+    args0: [
+      { type: "input_value", name: "condition", check: "Boolean" },
+    ],
+  };
   Blockly.Blocks["condition_elif"] = {
     init: function () {
-      this.appendDummyInput().appendField("elif");
-      this.appendValueInput("condition").setCheck("Boolean");
-      this.appendDummyInput().appendField(":");
+      this.jsonInit(condition_elif);
       this.appendStatementInput("content").setCheck("Boolean");
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
@@ -79,7 +87,7 @@ export function setLogic() {
     },
 
     updateShadow: function () {
-      // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+      
       var connection = this.getInput("condition_first_value").connection;
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
@@ -109,8 +117,8 @@ export function setLogic() {
       this.appendValueInput("condition_first_value").setCheck(null);
       this.appendDummyInput().appendField(
         new Blockly.FieldDropdown([
-          ["and", "and"],
-          ["or", "or"],
+          ['and', Blockly.Msg["condition_and"]],
+          ["or", Blockly.Msg["condition_or"]],
         ]),
         "condition_comp"
       );
@@ -127,7 +135,7 @@ export function setLogic() {
     },
 
     updateShadow: function () {
-      // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+      
       var connection = this.getInput("condition_first_value").connection;
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
@@ -152,11 +160,15 @@ export function setLogic() {
     },
   };
 
+  var condition_not = {
+    message0: Blockly.Msg["condition_not"],
+    args0: [
+      { type: "input_value", name: "condition_value_not", check: null },
+    ],
+  };
   Blockly.Blocks["condition_not"] = {
     init: function () {
-      this.appendValueInput("condition_value_not")
-        .setCheck(null)
-        .appendField("not");
+      this.jsonInit(condition_not);
       this.setOutput(true, "Boolean");
       this.setColour("%{BKY_LOGIC_COLOR}");
       this.setTooltip("Renverse le booléen");
@@ -167,7 +179,7 @@ export function setLogic() {
     },
 
     updateShadow: function () {
-      // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+      
       var connection = this.getInput("condition_value_not").connection;
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(

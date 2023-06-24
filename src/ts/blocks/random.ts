@@ -3,7 +3,7 @@ import * as Blockly from "blockly";
 export function setRandom() {
   Blockly.Blocks["random_random"] = {
     init: function () {
-      this.appendDummyInput().appendField("random.random()");
+      this.appendDummyInput().appendField(Blockly.Msg["random_random"]);
       this.setOutput(true, null);
       this.setColour("%{BKY_RANDOM_COLOR}");
       this.setTooltip("Renvoie un nombre aléatoire compris entre 0 et 1");
@@ -13,15 +13,16 @@ export function setRandom() {
     },
   };
 
+  var random_randint = {
+    message0: Blockly.Msg["random_randint"],
+    args0: [
+      { type: "field_number", name: "min", value: 0, check: "Number" },
+      { type: "field_number", name: "max", value: 100, check: "Number" },
+    ],
+  };
   Blockly.Blocks["random_randint"] = {
     init: function () {
-      this.appendDummyInput()
-        .appendField("random.randint (")
-        .appendField(new Blockly.FieldTextInput("0"), "min")
-        .appendField(" , ")
-        .appendField(new Blockly.FieldTextInput("100"), "max")
-        .appendField(")");
-
+      this.jsonInit(random_randint);
       this.setOutput(true, null);
       this.setColour("%{BKY_RANDOM_COLOR}");
       this.setTooltip(
@@ -33,12 +34,13 @@ export function setRandom() {
     },
   };
 
+  var random_choice = {
+    message0: Blockly.Msg["random_choice"],
+    args0: [{ type: "input_value", name: "list", check: null }],
+  };
   Blockly.Blocks["random_choice"] = {
     init: function () {
-      this.appendDummyInput().appendField("random.choice (");
-      this.appendValueInput("list").setCheck(null);
-      this.appendDummyInput().appendField(")");
-
+      this.jsonInit(random_choice);
       this.setOutput(true, null);
       this.setColour("%{BKY_RANDOM_COLOR}");
       this.setTooltip("Renvoie un élément aléatoire d'une liste");
@@ -48,7 +50,7 @@ export function setRandom() {
       this.updateShadow();
     },
     updateShadow: function () {
-      // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+      
       var connection = this.getInput("list").connection;
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
@@ -62,12 +64,13 @@ export function setRandom() {
     },
   };
 
+  var random_shuffle = {
+    message0: Blockly.Msg["random_shuffle"],
+    args0: [{ type: "input_value", name: "list", check: null }],
+  };
   Blockly.Blocks["random_shuffle"] = {
     init: function () {
-      this.appendDummyInput().appendField("random.shuffle (");
-      this.appendValueInput("list").setCheck(null);
-      this.appendDummyInput().appendField(")");
-
+      this.jsonInit(random_shuffle);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_RANDOM_COLOR}");
@@ -78,7 +81,7 @@ export function setRandom() {
       this.updateShadow();
     },
     updateShadow: function () {
-      // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+      
       var connection = this.getInput("list").connection;
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
@@ -92,15 +95,16 @@ export function setRandom() {
     },
   };
 
+  var random_uniform = {
+    message0: Blockly.Msg["random_uniform"],
+    args0: [
+      { type: "field_number", name: "min", value: 0, check: "Number" },
+      { type: "field_number", name: "max", value: 1, check: "Number" },
+    ],
+  };
   Blockly.Blocks["random_uniform"] = {
     init: function () {
-      this.appendDummyInput()
-        .appendField("random.uniform (")
-        .appendField(new Blockly.FieldTextInput("0"), "min")
-        .appendField(" , ")
-        .appendField(new Blockly.FieldTextInput("1"), "max")
-        .appendField(")");
-
+      this.jsonInit(random_uniform);
       this.setOutput(true, null);
       this.setColour("%{BKY_RANDOM_COLOR}");
       this.setTooltip(
@@ -112,17 +116,17 @@ export function setRandom() {
     },
   };
 
+  var random_randrange = {
+    message0: Blockly.Msg["random_randrange"],
+    args0: [
+      { type: "field_number", name: "min", value: 0, check: "Number" },
+      { type: "field_number", name: "max", value: 100, check: "Number" },
+      { type: "field_number", name: "step", value: 1, check: "Number" },
+    ],
+  };
   Blockly.Blocks["random_randrange"] = {
     init: function () {
-      this.appendDummyInput()
-        .appendField("random.randrange (")
-        .appendField(new Blockly.FieldTextInput("0"), "min")
-        .appendField(" , ")
-        .appendField(new Blockly.FieldTextInput("100"), "max")
-        .appendField(" , ")
-        .appendField(new Blockly.FieldTextInput("1"), "step")
-        .appendField(")");
-
+      this.jsonInit(random_randrange);
       this.setOutput(true, null);
       this.setColour("%{BKY_RANDOM_COLOR}");
       this.setTooltip(
@@ -131,15 +135,16 @@ export function setRandom() {
     },
   };
 
+  var random_sample = {
+    message0: Blockly.Msg["random_sample"],
+    args0: [
+      { type: "input_value", name: "list", check: null },
+      { type: "field_number", name: "k", value: 1, check: "Number" },
+    ],
+  };
   Blockly.Blocks["random_sample"] = {
     init: function () {
-      this.appendDummyInput().appendField("random.sample (");
-      this.appendValueInput("list").setCheck(null);
-      this.appendDummyInput()
-        .appendField(" , ")
-        .appendField(new Blockly.FieldTextInput("1"), "k")
-        .appendField(")");
-
+      this.jsonInit(random_sample);
       this.setOutput(true, null);
       this.setColour("%{BKY_RANDOM_COLOR}");
       this.setTooltip("Renvoie une liste de k éléments aléatoires d'une liste");
@@ -149,7 +154,7 @@ export function setRandom() {
       this.updateShadow();
     },
     updateShadow: function () {
-      // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+      
       var connection = this.getInput("list").connection;
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
@@ -163,13 +168,13 @@ export function setRandom() {
     },
   };
 
+  var random_seed = {
+    message0: Blockly.Msg["random_seed"],
+    args0: [{ type: "field_number", name: "seed", value: 0, check: "Number" }],
+  };
   Blockly.Blocks["random_seed"] = {
     init: function () {
-      this.appendDummyInput()
-        .appendField("random.seed (")
-        .appendField(new Blockly.FieldTextInput("0"), "seed")
-        .appendField(")");
-
+      this.jsonInit(random_seed);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_RANDOM_COLOR}");

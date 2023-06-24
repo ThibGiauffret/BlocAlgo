@@ -2,18 +2,18 @@ import * as Blockly from "blockly";
 
 export function setLoops() {
   // Boucles
+  var boucle_for = {
+    "message0": Blockly.Msg['boucle_for'],
+    "args0": [
+      {"type": "field_variable", "name": "VAR", "variable": "item", "variableTypes": [""]},
+      {"type": "field_input", "name": "start", "check": "Number"},
+      {"type": "field_input", "name": "end", "check": "Number"},
+      {"type": "field_input", "name": "step", "check": "Number"}
+    ]
+  };
   Blockly.Blocks["boucle_for"] = {
     init: function () {
-      this.appendDummyInput()
-        .appendField("for")
-        .appendField(new Blockly.FieldVariable("item"), "VAR")
-        .appendField("in range (")
-        .appendField(new Blockly.FieldNumber(0), "start")
-        .appendField(",")
-        .appendField(new Blockly.FieldNumber(10), "end")
-        .appendField(",")
-        .appendField(new Blockly.FieldNumber(1), "step")
-        .appendField("):");
+      this.jsonInit(boucle_for);
       this.appendStatementInput("content").setCheck("Boolean");
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
@@ -27,14 +27,16 @@ export function setLoops() {
     },
   };
 
+  var boucle_for_in = {
+    "message0": Blockly.Msg['boucle_for_in'],
+    "args0": [
+      {"type": "field_variable", "name": "VAR", "variable": "item", "variableTypes": [""]},
+      {"type": "input_value", "name": "list", "check": null},
+    ]
+  };
   Blockly.Blocks["boucle_for_in"] = {
     init: function () {
-      this.appendDummyInput()
-        .appendField("for")
-        .appendField(new Blockly.FieldVariable("item"), "VAR")
-        .appendField("in");
-      this.appendValueInput("list").setCheck(null);
-      this.appendDummyInput().appendField(":");
+      this.jsonInit(boucle_for_in);
       this.appendStatementInput("content").setCheck("Boolean");
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
@@ -44,11 +46,15 @@ export function setLoops() {
     },
   };
 
+  var boucle_while = {
+    "message0": Blockly.Msg['boucle_while'],
+    "args0": [
+      {"type": "input_value", "name": "condition", "check": "Boolean"},
+    ]
+  };
   Blockly.Blocks["boucle_while"] = {
     init: function () {
-      this.appendDummyInput().appendField("while");
-      this.appendValueInput("condition").setCheck("Boolean");
-      this.appendDummyInput().appendField(":");
+      this.jsonInit(boucle_while);
       this.appendStatementInput("content").setCheck("Boolean");
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);

@@ -4,7 +4,7 @@ export function setImport() {
   // Importation
   Blockly.Blocks["import_numpy"] = {
     init: function () {
-      this.appendDummyInput().appendField("import numpy as np");
+      this.appendDummyInput().appendField(Blockly.Msg["import_numpy"]);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_IMPORT_COLOR}");
@@ -15,7 +15,7 @@ export function setImport() {
 
   Blockly.Blocks["import_turtle"] = {
     init: function () {
-      this.appendDummyInput().appendField("from turtle import *");
+      this.appendDummyInput().appendField(Blockly.Msg["import_turtle"]);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_IMPORT_COLOR}");
@@ -26,7 +26,7 @@ export function setImport() {
 
   Blockly.Blocks["import_random"] = {
     init: function () {
-      this.appendDummyInput().appendField("import random");
+      this.appendDummyInput().appendField(Blockly.Msg["import_random"]);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_IMPORT_COLOR}");
@@ -37,7 +37,7 @@ export function setImport() {
 
   Blockly.Blocks["import_math"] = {
     init: function () {
-      this.appendDummyInput().appendField("import math");
+      this.appendDummyInput().appendField(Blockly.Msg["import_math"]);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_IMPORT_COLOR}");
@@ -48,7 +48,7 @@ export function setImport() {
 
   Blockly.Blocks["import_time"] = {
     init: function () {
-      this.appendDummyInput().appendField("import time");
+      this.appendDummyInput().appendField(Blockly.Msg["import_time"]);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_IMPORT_COLOR}");
@@ -59,7 +59,7 @@ export function setImport() {
 
   Blockly.Blocks["import_matplotlib"] = {
     init: function () {
-      this.appendDummyInput().appendField("import matplotlib.pyplot as plt");
+      this.appendDummyInput().appendField(Blockly.Msg["import_matplotlib"]);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_IMPORT_COLOR}");
@@ -70,7 +70,7 @@ export function setImport() {
 
   Blockly.Blocks["import_pil"] = {
     init: function () {
-      this.appendDummyInput().appendField("from PIL import Image");
+      this.appendDummyInput().appendField(Blockly.Msg["import_pil"]);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_IMPORT_COLOR}");

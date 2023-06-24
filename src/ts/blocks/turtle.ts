@@ -2,11 +2,13 @@ import * as Blockly from "blockly";
 
 export function setTurtle() {
   // Turtle create
+  var turtle_init = {
+    message0: Blockly.Msg["turtle_init"],
+    args0: [{ type: "field_variable", name: "VAR", variable: "tortue" }],
+  };
   Blockly.Blocks["turtle_init"] = {
     init: function () {
-      this.appendDummyInput()
-        .appendField(new Blockly.FieldVariable("tortue"), "VAR")
-        .appendField(" = Turtle()");
+      this.jsonInit(turtle_init);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_TURTLE_COLOR}");
@@ -18,7 +20,7 @@ export function setTurtle() {
   // turtle mainloop
   Blockly.Blocks["turtle_mainloop"] = {
     init: function () {
-      this.appendDummyInput().appendField("mainloop()");
+      this.appendDummyInput().appendField(Blockly.Msg["turtle_mainloop"]);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_TURTLE_COLOR}");
@@ -30,13 +32,16 @@ export function setTurtle() {
   };
 
   //   turtle forward
+  var turtle_forward = {
+    message0: Blockly.Msg["turtle_forward"],
+    args0: [
+      { type: "field_variable", name: "VAR", variable: "tortue" },
+      { type: "input_value", name: "distance", check: "Number" },
+    ],
+  };
   Blockly.Blocks["turtle_forward"] = {
     init: function () {
-      this.appendDummyInput()
-        .appendField(new Blockly.FieldVariable("tortue"), "VAR")
-        .appendField(".forward (");
-      this.appendValueInput("distance").setCheck(null);
-      this.appendDummyInput().appendField(")");
+      this.jsonInit(turtle_forward);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_TURTLE_COLOR}");
@@ -45,7 +50,7 @@ export function setTurtle() {
       this.updateShadow();
     },
     updateShadow: function () {
-      // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+      
       var connection = this.getInput("distance").connection;
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
@@ -60,13 +65,16 @@ export function setTurtle() {
   };
 
   //   turtle backward
+  var turtle_backward = {
+    message0: Blockly.Msg["turtle_backward"],
+    args0: [
+      { type: "field_variable", name: "VAR", variable: "tortue" },
+      { type: "input_value", name: "distance", check: "Number" },
+    ],
+  };
   Blockly.Blocks["turtle_backward"] = {
     init: function () {
-      this.appendDummyInput()
-        .appendField(new Blockly.FieldVariable("tortue"), "VAR")
-        .appendField(".backward (");
-      this.appendValueInput("distance").setCheck("Number");
-      this.appendDummyInput().appendField(")");
+      this.jsonInit(turtle_backward);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_TURTLE_COLOR}");
@@ -75,7 +83,7 @@ export function setTurtle() {
       this.updateShadow();
     },
     updateShadow: function () {
-      // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+      
       var connection = this.getInput("distance").connection;
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
@@ -90,13 +98,16 @@ export function setTurtle() {
   };
 
   // turtle right
+  var turtle_right = {
+    message0: Blockly.Msg["turtle_right"],
+    args0: [
+      { type: "field_variable", name: "VAR", variable: "tortue" },
+      { type: "input_value", name: "angle", check: "Number" },
+    ],
+  };
   Blockly.Blocks["turtle_right"] = {
     init: function () {
-      this.appendDummyInput()
-        .appendField(new Blockly.FieldVariable("tortue"), "VAR")
-        .appendField(".right (");
-      this.appendValueInput("angle").setCheck("Number");
-      this.appendDummyInput().appendField(")");
+      this.jsonInit(turtle_right);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_TURTLE_COLOR}");
@@ -107,7 +118,7 @@ export function setTurtle() {
       this.updateShadow();
     },
     updateShadow: function () {
-      // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+      
       var connection = this.getInput("angle").connection;
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
@@ -122,13 +133,16 @@ export function setTurtle() {
   };
 
   // turtle left
+  var turtle_left = {
+    message0: Blockly.Msg["turtle_left"],
+    args0: [
+      { type: "field_variable", name: "VAR", variable: "tortue" },
+      { type: "input_value", name: "angle", check: "Number" },
+    ],
+  };
   Blockly.Blocks["turtle_left"] = {
     init: function () {
-      this.appendDummyInput()
-        .appendField(new Blockly.FieldVariable("tortue"), "VAR")
-        .appendField(".left (");
-      this.appendValueInput("angle").setCheck("Number");
-      this.appendDummyInput().appendField(")");
+      this.jsonInit(turtle_left);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_TURTLE_COLOR}");
@@ -139,7 +153,7 @@ export function setTurtle() {
       this.updateShadow();
     },
     updateShadow: function () {
-      // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+      
       var connection = this.getInput("angle").connection;
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
@@ -154,11 +168,13 @@ export function setTurtle() {
   };
 
   // turtle penup
+  var turtle_penup = {
+    message0: Blockly.Msg["turtle_penup"],
+    args0: [{ type: "field_variable", name: "VAR", variable: "tortue" }],
+  };
   Blockly.Blocks["turtle_penup"] = {
     init: function () {
-      this.appendDummyInput()
-        .appendField(new Blockly.FieldVariable("tortue"), "VAR")
-        .appendField(".penup()");
+      this.jsonInit(turtle_penup);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_TURTLE_COLOR}");
@@ -168,11 +184,13 @@ export function setTurtle() {
   };
 
   // turtle pendown
+  var turtle_pendown = {
+    message0: Blockly.Msg["turtle_pendown"],
+    args0: [{ type: "field_variable", name: "VAR", variable: "tortue" }],
+  };
   Blockly.Blocks["turtle_pendown"] = {
     init: function () {
-      this.appendDummyInput()
-        .appendField(new Blockly.FieldVariable("tortue"), "VAR")
-        .appendField(".pendown()");
+      this.jsonInit(turtle_pendown);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_TURTLE_COLOR}");
@@ -182,13 +200,16 @@ export function setTurtle() {
   };
 
   // turtle pencolor
+  var turtle_pencolor = {
+    message0: Blockly.Msg["turtle_pencolor"],
+    args0: [
+      { type: "field_variable", name: "VAR", variable: "tortue" },
+      { type: "input_value", name: "color", check: "String" },
+    ],
+  };
   Blockly.Blocks["turtle_pencolor"] = {
     init: function () {
-      this.appendDummyInput()
-        .appendField(new Blockly.FieldVariable("tortue"), "VAR")
-        .appendField(".pencolor (");
-      this.appendValueInput("color").setCheck("String");
-      this.appendDummyInput().appendField(")");
+      this.jsonInit(turtle_pencolor);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_TURTLE_COLOR}");
@@ -197,7 +218,7 @@ export function setTurtle() {
       this.updateShadow();
     },
     updateShadow: function () {
-      // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+      
       var connection = this.getInput("color").connection;
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
@@ -212,14 +233,16 @@ export function setTurtle() {
   };
 
   // turtle speed
-
+  var turtle_speed = {
+    message0: Blockly.Msg["turtle_speed"],
+    args0: [
+      { type: "field_variable", name: "VAR", variable: "tortue" },
+      { type: "input_value", name: "speed", check: "Number" },
+    ],
+  };
   Blockly.Blocks["turtle_speed"] = {
     init: function () {
-      this.appendDummyInput()
-        .appendField(new Blockly.FieldVariable("tortue"), "VAR")
-        .appendField(".speed (");
-      this.appendValueInput("speed").setCheck("Number");
-      this.appendDummyInput().appendField(")");
+      this.jsonInit(turtle_speed);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_TURTLE_COLOR}");
@@ -228,7 +251,7 @@ export function setTurtle() {
       this.updateShadow();
     },
     updateShadow: function () {
-      // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+      
       var connection = this.getInput("speed").connection;
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
@@ -243,13 +266,16 @@ export function setTurtle() {
   };
 
   // turtle width
+  var turtle_width = {
+    message0: Blockly.Msg["turtle_width"],
+    args0: [
+      { type: "field_variable", name: "VAR", variable: "tortue" },
+      { type: "input_value", name: "width", check: "Number" },
+    ],
+  };
   Blockly.Blocks["turtle_width"] = {
     init: function () {
-      this.appendDummyInput()
-        .appendField(new Blockly.FieldVariable("tortue"), "VAR")
-        .appendField(".width (");
-      this.appendValueInput("width").setCheck("Number");
-      this.appendDummyInput().appendField(")");
+      this.jsonInit(turtle_width);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_TURTLE_COLOR}");
@@ -258,7 +284,7 @@ export function setTurtle() {
       this.updateShadow();
     },
     updateShadow: function () {
-      // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+      
       var connection = this.getInput("width").connection;
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
@@ -273,15 +299,17 @@ export function setTurtle() {
   };
 
   // turtle goto
+  var turtle_goto = {
+    message0: Blockly.Msg["turtle_goto"],
+    args0: [
+      { type: "field_variable", name: "VAR", variable: "tortue" },
+      { type: "input_value", name: "x", check: "Number" },
+      { type: "input_value", name: "y", check: "Number" },
+    ],
+  };
   Blockly.Blocks["turtle_goto"] = {
     init: function () {
-      this.appendDummyInput()
-        .appendField(new Blockly.FieldVariable("tortue"), "VAR")
-        .appendField(".goto (");
-      this.appendValueInput("x").setCheck("Number");
-      this.appendDummyInput().appendField(",");
-      this.appendValueInput("y").setCheck("Number");
-      this.appendDummyInput().appendField(")");
+      this.jsonInit(turtle_goto);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_TURTLE_COLOR}");
@@ -290,7 +318,7 @@ export function setTurtle() {
       this.updateShadow();
     },
     updateShadow: function () {
-      // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+      
       var connection = this.getInput("x").connection;
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
@@ -316,15 +344,17 @@ export function setTurtle() {
   };
 
   // turtle circle
+  var turtle_circle = {
+    message0: Blockly.Msg["turtle_circle"],
+    args0: [
+      { type: "field_variable", name: "VAR", variable: "tortue" },  
+      { type: "input_value", name: "radius", check: "Number" },
+      { type: "input_value", name: "angle", check: "Number" },
+    ],
+  };
   Blockly.Blocks["turtle_circle"] = {
     init: function () {
-      this.appendDummyInput()
-        .appendField(new Blockly.FieldVariable("tortue"), "VAR")
-        .appendField(".circle (");
-      this.appendValueInput("radius").setCheck("Number");
-      this.appendDummyInput().appendField(",");
-      this.appendValueInput("angle").setCheck("Number");
-      this.appendDummyInput().appendField(")");
+      this.jsonInit(turtle_circle);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_TURTLE_COLOR}");
@@ -333,7 +363,7 @@ export function setTurtle() {
       this.updateShadow();
     },
     updateShadow: function () {
-      // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+      
       var connection = this.getInput("radius").connection;
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(

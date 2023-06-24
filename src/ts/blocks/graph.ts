@@ -2,21 +2,19 @@ import * as Blockly from "blockly";
 
 export function setGraph() {
   // matplotlib init
+  var matplotlib_plot = {
+    "message0": Blockly.Msg['matplotlib_plot'],
+    "args0": [
+      {"type": "input_value", "name": "X", "check": null},
+      {"type": "input_value", "name": "Y", "check": null},
+      {"type": "field_input", "name": "LABEL", "text" : "nom", "check": "String"},
+      {"type": "field_input", "name": "COLOR", "text" : "red", "check": "String"},
+      {"type": "field_input", "name": "MARKER", "text" : "o", "check": "String"},
+    ]
+  };
   Blockly.Blocks["matplotlib_plot"] = {
     init: function () {
-      this.appendDummyInput().appendField("plt.plot (");
-      this.appendValueInput("X").setCheck(null);
-      this.appendDummyInput().appendField(" , ");
-      this.appendValueInput("Y").setCheck(null);
-      this.appendDummyInput()
-        .appendField(' , label = "')
-        .appendField(new Blockly.FieldTextInput("nom"), "LABEL")
-        .appendField('" , color = "')
-        .appendField(new Blockly.FieldTextInput("red"), "COLOR")
-        .appendField('" marker = "')
-        .appendField(new Blockly.FieldTextInput("o"), "MARKER")
-        .appendField(' ")');
-      this.setInputsInline(true);
+      this.jsonInit(matplotlib_plot);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_GRAPH_COLOR}");
@@ -25,7 +23,7 @@ export function setGraph() {
       this.updateShadow();
     },
     updateShadow: function () {
-      // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+      
       var connection = this.getInput("X").connection;
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
@@ -50,17 +48,17 @@ export function setGraph() {
     },
   };
 
+  var matplotlib_plot2 = {
+    "message0": Blockly.Msg['matplotlib_plot2'],
+    "args0": [
+      {"type": "input_value", "name": "X", "check": null},
+      {"type": "input_value", "name": "Y", "check": null},
+      {"type": "field_input", "name": "param", "text" : "ro", "check": "String"},
+    ]
+  };
   Blockly.Blocks["matplotlib_plot2"] = {
     init: function () {
-      this.appendDummyInput().appendField("plt.plot (");
-      this.appendValueInput("X").setCheck(null);
-      this.appendDummyInput().appendField(" , ");
-      this.appendValueInput("Y").setCheck(null);
-      this.appendDummyInput()
-        .appendField(' , "')
-        .appendField(new Blockly.FieldTextInput("ro"), "param")
-        .appendField('")');
-      this.setInputsInline(true);
+      this.jsonInit(matplotlib_plot2);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_GRAPH_COLOR}");
@@ -69,7 +67,7 @@ export function setGraph() {
       this.updateShadow();
     },
     updateShadow: function () {
-      // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+      
       var connection = this.getInput("X").connection;
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
@@ -96,7 +94,7 @@ export function setGraph() {
 
   Blockly.Blocks["matplotlib_show"] = {
     init: function () {
-      this.appendDummyInput().appendField("plt.show()");
+      this.appendDummyInput().appendField(Blockly.Msg["matplotlib_show"]);
       this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
@@ -106,12 +104,15 @@ export function setGraph() {
     },
   };
 
+  var matplotlib_title = {
+    "message0": Blockly.Msg['matplotlib_title'],
+    "args0": [
+      {"type": "input_value", "name": "TITLE", "check": null},
+    ]
+  };
   Blockly.Blocks["matplotlib_title"] = {
     init: function () {
-      this.appendDummyInput().appendField('plt.title ("');
-      this.appendValueInput("TITLE").setCheck(null);
-      this.appendDummyInput().appendField('")');
-      this.setInputsInline(true);
+      this.jsonInit(matplotlib_title);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_GRAPH_COLOR}");
@@ -120,12 +121,12 @@ export function setGraph() {
       this.updateShadow();
     },
     updateShadow: function () {
-      // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+      
       var connection = this.getInput("TITLE").connection;
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
         "<xml>" +
-          '  <shadow type="value"><field name="VALUE">Titre</field></shadow>' +
+          '  <shadow type="value"><field name="VALUE">Titre du graphique</field></shadow>' +
           "</xml>"
       ).children[0];
       connection.setShadowDom(dom);
@@ -134,12 +135,15 @@ export function setGraph() {
     },
   };
 
+  var matplotlib_xlabel = {
+    "message0": Blockly.Msg['matplotlib_xlabel'],
+    "args0": [
+      {"type": "input_value", "name": "LABEL", "check": null},
+    ]
+  };
   Blockly.Blocks["matplotlib_xlabel"] = {
     init: function () {
-      this.appendDummyInput().appendField('plt.xlabel ("');
-      this.appendValueInput("LABEL").setCheck(null);
-      this.appendDummyInput().appendField('")');
-      this.setInputsInline(true);
+      this.jsonInit(matplotlib_xlabel);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_GRAPH_COLOR}");
@@ -148,7 +152,7 @@ export function setGraph() {
       this.updateShadow();
     },
     updateShadow: function () {
-      // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+      
       var connection = this.getInput("LABEL").connection;
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
@@ -162,12 +166,15 @@ export function setGraph() {
     },
   };
 
+  var matplotlib_ylabel = {
+    "message0": Blockly.Msg['matplotlib_ylabel'],
+    "args0": [
+      {"type": "input_value", "name": "LABEL", "check": null},
+    ]
+  };
   Blockly.Blocks["matplotlib_ylabel"] = {
     init: function () {
-      this.appendDummyInput().appendField('plt.ylabel ("');
-      this.appendValueInput("LABEL").setCheck(null);
-      this.appendDummyInput().appendField('")');
-      this.setInputsInline(true);
+      this.jsonInit(matplotlib_ylabel);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_GRAPH_COLOR}");
@@ -176,7 +183,7 @@ export function setGraph() {
       this.updateShadow();
     },
     updateShadow: function () {
-      // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+      
       var connection = this.getInput("LABEL").connection;
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
@@ -192,7 +199,7 @@ export function setGraph() {
 
   Blockly.Blocks["matplotlib_grid"] = {
     init: function () {
-      this.appendDummyInput().appendField("plt.grid ()");
+      this.appendDummyInput().appendField(Blockly.Msg["matplotlib_grid"]);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_GRAPH_COLOR}");
@@ -203,7 +210,7 @@ export function setGraph() {
 
   Blockly.Blocks["matplotlib_legend"] = {
     init: function () {
-      this.appendDummyInput().appendField("plt.legend()");
+      this.appendDummyInput().appendField(Blockly.Msg["matplotlib_legend"]);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_GRAPH_COLOR}");

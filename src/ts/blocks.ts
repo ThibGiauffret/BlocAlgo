@@ -7,7 +7,8 @@
 
 import * as Blockly from "blockly";
 // import * as Fr from "blockly/msg/fr";
-import * as Custom from "./fr";
+// import * as FrenchLang from "./lang/fr";
+import * as PythonLang from "./lang/python";
 import { pythonGenerator } from "blockly/python";
 import { toolbox } from "./blocks/toolbox";
 
@@ -54,7 +55,7 @@ export default class BlockEditor {
   public async init() {
     this.setDarkTheme();
     this.patchRightBump();
-    Blockly.setLocale(Custom);
+    Blockly.setLocale(PythonLang);
     let options = {
       toolbox: toolbox,
       collapse: true,

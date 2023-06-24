@@ -3,13 +3,16 @@ import * as Blockly from "blockly";
 export function setPIL() {
     
   // PIL create
+  var pil_open = {
+    "message0": Blockly.Msg['pil_open'],
+    "args0": [
+      {"type": "field_variable", "name": "VAR1", "variable": "image", "variableTypes": [""]},
+      {"type": "input_value", "name": "path_value", "check": null},
+    ]
+  };
   Blockly.Blocks["pil_open"] = {
     init: function () {
-      this.appendDummyInput()
-      .appendField(new Blockly.FieldVariable("image"), "VAR1")
-      .appendField(' = Image.open(');
-      this.appendValueInput("path_value").setCheck(null);
-        this.appendDummyInput().appendField(')');
+      this.jsonInit(pil_open);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_PIL_COLOR}");
@@ -18,7 +21,7 @@ export function setPIL() {
       this.updateShadow();
     },
     updateShadow: function () {
-        // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+        
         var connection = this.getInput("path_value").connection;
         var otherConnection = connection.targetConnection;
         var dom = Blockly.Xml.textToDom(
@@ -31,11 +34,15 @@ export function setPIL() {
   };
 
   // PIL show
+  var pil_show = {
+    "message0": Blockly.Msg['pil_show'],
+    "args0": [
+      {"type": "field_variable", "name": "VAR1", "variable": "image", "variableTypes": [""]},
+    ]
+  };
     Blockly.Blocks["pil_show"] = {
         init: function () {
-            this.appendDummyInput()
-            .appendField(new Blockly.FieldVariable("image"), "VAR1")
-            .appendField(".show()");
+            this.jsonInit(pil_show);
             this.setPreviousStatement(true, null);
             this.setNextStatement(true, null);
             this.setColour("%{BKY_PIL_COLOR}");
@@ -45,11 +52,15 @@ export function setPIL() {
         };
 
         // PIL size
+        var pil_size = {
+            "message0": Blockly.Msg['pil_size'],
+            "args0": [
+              {"type": "field_variable", "name": "VAR1", "variable": "image", "variableTypes": [""]},
+            ],
+        }
     Blockly.Blocks["pil_size"] = {
         init: function () {
-            this.appendDummyInput()
-            .appendField(new Blockly.FieldVariable("image"), "VAR1")
-            .appendField(".size");
+            this.jsonInit(pil_size);
             this.setOutput(true, null);
             this.setColour("%{BKY_PIL_COLOR}");
             this.setTooltip("Récupérer la taille d'une image sous la forme (largeur, hauteur)");
@@ -58,16 +69,17 @@ export function setPIL() {
         };
 
     // PIL resize
+    var pil_resize = {
+        "message0": Blockly.Msg['pil_resize'],
+        "args0": [
+          {"type": "field_variable", "name": "VAR1", "variable": "nouvelle_image", "variableTypes": [""]},
+          {"type": "field_variable", "name": "VAR2", "variable": "image", "variableTypes": [""]},
+          {"type": "input_value", "name": "dim_value", "check": null},
+        ]
+      };
     Blockly.Blocks["pil_resize"] = {
         init: function () {
-            this.appendDummyInput()
-            .appendField(new Blockly.FieldVariable("nouvelle_image"), "VAR1")
-            .appendField(" = ")
-            .appendField(new Blockly.FieldVariable("image"), "VAR2")
-            .appendField(".resize(");
-            this.appendValueInput("dim_value").setCheck(null);
-            this.appendDummyInput()
-            .appendField(")");
+            this.jsonInit(pil_resize);
             this.setPreviousStatement(true, null);
             this.setNextStatement(true, null);
             this.setColour("%{BKY_PIL_COLOR}");
@@ -76,7 +88,7 @@ export function setPIL() {
             this.updateShadow();
             },
             updateShadow: function () {
-                // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+                
                 var connection = this.getInput("dim_value").connection;
                 var otherConnection = connection.targetConnection;
                 var dom = Blockly.Xml.textToDom(
@@ -92,16 +104,17 @@ export function setPIL() {
         };
 
     // PIL rotate
+    var pil_rotate = {
+        "message0": Blockly.Msg['pil_rotate'],
+        "args0": [
+          {"type": "field_variable", "name": "VAR1", "variable": "nouvelle_image", "variableTypes": [""]},
+          {"type": "field_variable", "name": "VAR2", "variable": "image", "variableTypes": [""]},
+          {"type": "input_value", "name": "angle_value", "check": null},
+        ]
+      };
     Blockly.Blocks["pil_rotate"] = {
         init: function () {
-            this.appendDummyInput()
-            .appendField(new Blockly.FieldVariable("nouvelle_image"), "VAR1")
-            .appendField(" = ")
-            .appendField(new Blockly.FieldVariable("image"), "VAR2")
-            .appendField(".rotate(");
-            this.appendValueInput("angle_value").setCheck(null);
-            this.appendDummyInput()
-            .appendField(")");
+            this.jsonInit(pil_rotate);
             this.setPreviousStatement(true, null);
             this.setNextStatement(true, null);
             this.setColour("%{BKY_PIL_COLOR}");
@@ -110,7 +123,7 @@ export function setPIL() {
             this.updateShadow();
             },
             updateShadow: function () {
-                // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+                
                 var connection = this.getInput("angle_value").connection;
                 var otherConnection = connection.targetConnection;
                 var dom = Blockly.Xml.textToDom(
@@ -124,33 +137,18 @@ export function setPIL() {
               }
         };
 
-    //     // PIL save
-    // Blockly.Blocks["pil_save"] = {
-    //     init: function () {
-    //         this.appendDummyInput()
-    //         .appendField(new Blockly.FieldVariable("image"), "VAR1")
-    //         .appendField(".save(");
-    //         this.appendValueInput("path_value").setCheck(null);
-    //         this.appendDummyInput()
-    //         .appendField(")");
-    //         this.setPreviousStatement(true, null);
-    //         this.setNextStatement(true, null);
-    //         this.setColour("%{BKY_PIL_COLOR}");
-    //         this.setTooltip("Sauvegarder une image");
-    //         this.setHelpUrl("");
-    //         }
-    //     };
-
         // PIL crop
+    var pil_crop = {
+        "message0": Blockly.Msg['pil_crop'],
+        "args0": [
+          {"type": "field_variable", "name": "VAR1", "variable": "nouvelle_image", "variableTypes": [""]},
+          {"type": "field_variable", "name": "VAR2", "variable": "image", "variableTypes": [""]},
+          {"type": "input_value", "name": "border_value", "check": null},
+        ]
+      };
     Blockly.Blocks["pil_crop"] = {
         init: function () {
-            this.appendDummyInput()
-            .appendField(new Blockly.FieldVariable("nouvelle_image"), "VAR1")
-            .appendField(" = ")
-            .appendField(new Blockly.FieldVariable("image"), "VAR2")
-            .appendField(".crop(");
-            this.appendValueInput("border_value").setCheck(null);
-            this.appendDummyInput().appendField(")");
+            this.jsonInit(pil_crop);
             this.setPreviousStatement(true, null);
             this.setNextStatement(true, null);
             this.setColour("%{BKY_PIL_COLOR}");
@@ -159,7 +157,7 @@ export function setPIL() {
             this.updateShadow();
             },
             updateShadow: function () {
-                // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+                
                 var connection = this.getInput("border_value").connection;
                 var otherConnection = connection.targetConnection;
                 var dom = Blockly.Xml.textToDom(
@@ -174,15 +172,17 @@ export function setPIL() {
               }
         };
 
-        // PIL getpixel
+    // PIL getpixel
+    var pil_getpixel = {
+        "message0": Blockly.Msg['pil_getpixel'],
+        "args0": [
+          {"type": "field_variable", "name": "VAR1", "variable": "image", "variableTypes": [""]},
+          {"type": "input_value", "name": "pos_value", "check": null},
+        ],
+      }
     Blockly.Blocks["pil_getpixel"] = {
         init: function () {
-            this.appendDummyInput()
-            .appendField(new Blockly.FieldVariable("image"), "VAR1")
-            .appendField(".getpixel(");
-            this.appendValueInput("pos_value").setCheck(null);
-            this.appendDummyInput()
-            .appendField(")");
+            this.jsonInit(pil_getpixel);
             this.setOutput(true, null);
             this.setColour("%{BKY_PIL_COLOR}");
             this.setTooltip("Obtenir la couleur d'un pixel (colonne, ligne)");
@@ -190,7 +190,7 @@ export function setPIL() {
             this.updateShadow();
             },
             updateShadow: function () {
-                // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+                
                 var connection = this.getInput("pos_value").connection;
                 var otherConnection = connection.targetConnection;
                 var dom = Blockly.Xml.textToDom(
@@ -205,17 +205,17 @@ export function setPIL() {
         };
 
         // PIL putpixel
+    var pil_putpixel = {
+        "message0": Blockly.Msg['pil_putpixel'],
+        "args0": [
+          {"type": "field_variable", "name": "VAR1", "variable": "image", "variableTypes": [""]},
+          {"type": "input_value", "name": "pos_value", "check": null},
+          {"type": "input_value", "name": "color_value", "check": null},
+        ],
+      }
     Blockly.Blocks["pil_putpixel"] = {
         init: function () {
-            this.appendDummyInput()
-            .appendField(new Blockly.FieldVariable("image"), "VAR1")
-            .appendField(".putpixel(");
-            this.appendValueInput("pos_value").setCheck(null);
-            this.appendDummyInput()
-            .appendField(",");
-            this.appendValueInput("color_value").setCheck(null);
-            this.appendDummyInput()
-            .appendField(")");
+            this.jsonInit(pil_putpixel);
             this.setPreviousStatement(true, null);
             this.setNextStatement(true, null);
             this.setColour("%{BKY_PIL_COLOR}");
@@ -224,7 +224,7 @@ export function setPIL() {
             this.updateShadow();
             },
             updateShadow: function () {
-                // Exemple ici : https://groups.google.com/g/blockly/c/Cwe6TGH8vuA
+                
                 var connection = this.getInput("pos_value").connection;
                 var otherConnection = connection.targetConnection;
                 var dom = Blockly.Xml.textToDom(
