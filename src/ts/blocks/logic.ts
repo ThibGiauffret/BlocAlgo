@@ -117,8 +117,8 @@ export function setLogic() {
       this.appendValueInput("condition_first_value").setCheck(null);
       this.appendDummyInput().appendField(
         new Blockly.FieldDropdown([
-          ['and', Blockly.Msg["condition_and"]],
-          ["or", Blockly.Msg["condition_or"]],
+          [Blockly.Msg["condition_and"], 'and'],
+          [Blockly.Msg["condition_or"], 'or'],
         ]),
         "condition_comp"
       );

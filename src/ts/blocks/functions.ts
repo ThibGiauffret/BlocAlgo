@@ -13,6 +13,7 @@ export function setFunctions() {
     init: function () {
       this.jsonInit(function_def);
       this.appendStatementInput("function_statements").setCheck(null);
+      this.setInputsInline(true);
       // this.setPreviousStatement(true, null);
       // this.setNextStatement(true, null);
       this.setColour("%{BKY_FUNCTIONS_COLOR}");
@@ -59,6 +60,7 @@ export function setFunctions() {
   Blockly.Blocks["function_call"] = {
     init: function () {
       this.jsonInit(function_call);
+      this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_FUNCTIONS_COLOR}");

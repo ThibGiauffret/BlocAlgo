@@ -86,6 +86,14 @@
     Blockly.Msg["math_trunc"] = "math.trunc ( %1 )";
     Blockly.Msg["math_min"] = "min ( %1 )";
     Blockly.Msg["math_max"] = "max ( %1 )";
+    Blockly.Msg["math_add"] = "+";
+    Blockly.Msg["math_sub"] = "-";
+    Blockly.Msg["math_mul"] = "*";
+    Blockly.Msg["math_div"] = "/";
+    Blockly.Msg["math_mod"] = "%";
+    Blockly.Msg["math_pow2"] = "**";
+    Blockly.Msg["math_floordiv"] = "//";
+    Blockly.Msg["math_operator"] = "%1 %2 %3";
 
     // PIL
     Blockly.Msg["pil_open"] = '%1 = Image.open ( %2 )';

@@ -2,22 +2,26 @@ import * as Blockly from "blockly";
 
 export function setMath() {
   // Math operator block (same as condition)
+  var math_operator = {
+    "message0": Blockly.Msg["math_operator"],
+    "args0": [
+      {"type": "input_value", "name": "first_value", "check": null},
+      {"type": "field_dropdown", "name": "operator", "options": [
+        [Blockly.Msg["math_add"], '+'],
+        [Blockly.Msg["math_sub"], '-'],
+        [Blockly.Msg["math_mul"], '*'],
+        [Blockly.Msg["math_div"], '/'],
+        [Blockly.Msg["math_floordiv"], '//'],
+        [Blockly.Msg["math_pow2"], '**'],
+        [Blockly.Msg["math_mod"], '%'],
+      ]},
+      {"type": "input_value", "name": "second_value", "check": null}
+    ],
+    "inputsInline": true,
+  };
   Blockly.Blocks["math_operator"] = {
     init: function () {
-      this.appendValueInput("first_value").setCheck(null);
-      this.appendDummyInput().appendField(
-        new Blockly.FieldDropdown([
-          ["+", "+"],
-          ["-", "-"],
-          ["*", "*"],
-          ["/", "/"],
-          ["//", "//"],
-          ["**", "**"],
-          ["%", "%"],
-        ]),
-        "operator"
-      );
-      this.appendValueInput("second_value").setCheck(null);
+      this.jsonInit(math_operator);
       this.setOutput(true, null);
       this.setColour("%{BKY_MATH_COLOR}");
       this.setTooltip("Opérateurs mathématique");
