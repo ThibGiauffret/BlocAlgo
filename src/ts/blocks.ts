@@ -66,8 +66,6 @@ export default class BlockEditor {
     } 
 
     this.createWorkspace();
-
-    
   }
 
   public createWorkspace() {
