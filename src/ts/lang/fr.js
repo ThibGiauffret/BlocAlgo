@@ -49,7 +49,7 @@
     Blockly.Msg["import_pil"] = 'importer PIL.Image sous le nom Image';
 
     // Lists
-    Blockly.Msg["list_create"] = '%1 = %2';
+    Blockly.Msg["list_create"] = 'créer la variable %1 et stocker la liste %2';
     Blockly.Msg["list_add"] = 'ajouter %2 à la liste %1';
     Blockly.Msg["list_get"] = 'récupérer le %2 ème élément de la liste %1';
     Blockly.Msg["list_set"] = 'modifier le %2 ème élément de la liste %1 par %3';
