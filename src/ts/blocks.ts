@@ -6,8 +6,8 @@
  */
 
 import * as Blockly from "blockly";
-// import * as Fr from "blockly/msg/fr";
-// import * as FrenchLang from "./lang/fr";
+//@ts-ignore
+import * as FrenchLang from "./lang/fr";
 import * as PythonLang from "./lang/python";
 import { pythonGenerator } from "blockly/python";
 import { toolbox } from "./blocks/toolbox";
@@ -46,6 +46,7 @@ export default class BlockEditor {
   private _customDark: any;
   private _style: any;
   private _toolboxFlag = true;
+  private _language: string = "fr";
 
   /**
    * Initializes the Blockly workspace.
@@ -55,7 +56,21 @@ export default class BlockEditor {
   public async init() {
     this.setDarkTheme();
     this.patchRightBump();
-    Blockly.setLocale(PythonLang);
+
+    if (this._language == "fr") {
+      this._language = "python";
+      Blockly.setLocale(PythonLang);
+    }else{
+      this._language = "fr";
+      Blockly.setLocale(FrenchLang);
+    } 
+
+    this.createWorkspace();
+
+    
+  }
+
+  public createWorkspace() {
     let options = {
       toolbox: toolbox,
       collapse: true,
@@ -428,6 +443,32 @@ export default class BlockEditor {
     Blockly.Msg.RANDOM_COLOR = "#f5a623";
     Blockly.Msg.PIL_COLOR = "#81A0EB";
   }
+
+  /**
+   * Change language of Blockly
+   */
+  public changeLanguage() {
+    if (this._language == "fr") {
+      this._language = "python";
+      Blockly.setLocale(PythonLang);
+    }else{
+      this._language = "fr";
+      Blockly.setLocale(FrenchLang);
+    } 
+
+    // save workspace state to xml
+    const xml = Blockly.Xml.workspaceToDom(this._workspace);
+    // destroy workspace
+    this._workspace.dispose();
+    // create new workspace
+    this.createWorkspace();
+    // load workspace state from xml
+    Blockly.Xml.domToWorkspace(xml, this._workspace);
+
+    return this._language;
+  }
+
+
 }
 
 

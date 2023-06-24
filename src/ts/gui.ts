@@ -276,6 +276,9 @@ export default class GUI extends GUIBase {
     button = document.getElementById("download_script") as HTMLElement;
     button?.addEventListener("click", () => this.downloadScript());
 
+    button = document.getElementById("btn_langage") as HTMLElement;
+    button?.addEventListener("click", () => this.switchLanguage());
+
     // run
     button = document.getElementById("run1") as HTMLElement;
     button?.addEventListener("click", () => this.runScript());
@@ -487,6 +490,22 @@ export default class GUI extends GUIBase {
     document.body.appendChild(downloadAnchorNode); // required for firefox
     downloadAnchorNode.click();
     downloadAnchorNode.remove();
+  }
+
+  /**
+   * Switch language of the blocks.
+   */
+
+  public async switchLanguage() {
+    console.log("switching language");
+    var language = this._blockEditor.changeLanguage();
+    if (language == "python") {
+      document.getElementById("btn_langage")!.innerHTML = "<i class=\"fas fa-language\"></i>";
+      document.getElementById("btn_langage")!.title = "Traduire les blocs en langage naturel";
+    }else{
+      document.getElementById("btn_langage")!.innerHTML = "<i class=\"fab fa-python\"></i>";
+      document.getElementById("btn_langage")!.title = "Traduire les blocs en Python";
+    }
   }
 
   /**
