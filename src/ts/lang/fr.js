@@ -81,7 +81,7 @@
     Blockly.Msg["math_pow"] = "la valeur %1 à la puissance %2";
     Blockly.Msg["math_ceil"] = "arrondi supérieur de la valeur %1"
     Blockly.Msg["math_floor"] = "arrondi le plus proche de la valeur %1"
-    Blockly.Msg["math_fabs"] = "valeur absolue de la valeur %1"
+    Blockly.Msg["math_abs"] = "valeur absolue de la valeur %1"
     Blockly.Msg["math_round"] =   "arrondi de la valeur %1";
     Blockly.Msg["math_trunc"] =  "troncature de la valeur %1";
     Blockly.Msg["math_min"] = "valeur minimale de %1";
@@ -101,7 +101,7 @@
     Blockly.Msg["pil_size"] = 'obtenir la taille de l\'image %1';
     Blockly.Msg["pil_resize"] = 'redimensionner l\'image %2 à la taille %3 et la stocker dans %1';
     Blockly.Msg["pil_rotate"] = 'faire tourner l\'image %2 de %3 degrés et la stocker dans %1';
-    Blockly.Msg["pil_crop"] = 'recadrer l\'image %2 en fonction des coordonnées %3 et %4 et la stocker dans %1';
+    Blockly.Msg["pil_crop"] = 'recadrer l\'image %2 en fonction des coordonnées %3 et la stocker dans %1';
     Blockly.Msg["pil_getpixel"] = 'obtenir la couleur du pixel de l\'image %1 aux coordonnées %2';
     Blockly.Msg["pil_putpixel"] = 'modifier la couleur du pixel de l\'image %1 aux coordonnées %2 par la couleur %3';
     
@@ -118,7 +118,7 @@
     // Statements
     Blockly.Msg["time_sleep"] = "attendre %1 secondes";
     Blockly.Msg["print"] = "afficher %1";
-    Blockly.Msg["input"] = "entrer une %2 et la stocker dans %1";
+    Blockly.Msg["input"] = "damander à l'utilisateur de rentrer une valeur avec le message %2 et la stocker dans %1";
     Blockly.Msg["pass"] = "passer";
     Blockly.Msg["len"] = "longueur de %1";
     Blockly.Msg["int"] = "convertir %1 en entier";

@@ -23,6 +23,7 @@ export function setRandom() {
   Blockly.Blocks["random_randint"] = {
     init: function () {
       this.jsonInit(random_randint);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_RANDOM_COLOR}");
       this.setTooltip(
@@ -41,6 +42,7 @@ export function setRandom() {
   Blockly.Blocks["random_choice"] = {
     init: function () {
       this.jsonInit(random_choice);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_RANDOM_COLOR}");
       this.setTooltip("Renvoie un élément aléatoire d'une liste");
@@ -71,6 +73,7 @@ export function setRandom() {
   Blockly.Blocks["random_shuffle"] = {
     init: function () {
       this.jsonInit(random_shuffle);
+      this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_RANDOM_COLOR}");
@@ -105,6 +108,7 @@ export function setRandom() {
   Blockly.Blocks["random_uniform"] = {
     init: function () {
       this.jsonInit(random_uniform);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_RANDOM_COLOR}");
       this.setTooltip(
@@ -127,6 +131,7 @@ export function setRandom() {
   Blockly.Blocks["random_randrange"] = {
     init: function () {
       this.jsonInit(random_randrange);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_RANDOM_COLOR}");
       this.setTooltip(
@@ -145,6 +150,7 @@ export function setRandom() {
   Blockly.Blocks["random_sample"] = {
     init: function () {
       this.jsonInit(random_sample);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_RANDOM_COLOR}");
       this.setTooltip("Renvoie une liste de k éléments aléatoires d'une liste");
@@ -175,6 +181,7 @@ export function setRandom() {
   Blockly.Blocks["random_seed"] = {
     init: function () {
       this.jsonInit(random_seed);
+      this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_RANDOM_COLOR}");

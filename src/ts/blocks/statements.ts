@@ -35,6 +35,7 @@ export function setStatements() {
   Blockly.Blocks["time_sleep"] = {
     init: function () {
       this.jsonInit(time_sleep);
+      this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_STATEMENTS_COLOR}");
@@ -50,6 +51,7 @@ export function setStatements() {
   Blockly.Blocks["print"] = {
     init: function () {
       this.jsonInit(print);
+      this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_STATEMENTS_COLOR}");
@@ -83,6 +85,7 @@ export function setStatements() {
   Blockly.Blocks["input"] = {
     init: function () {
       this.jsonInit(input);
+      this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_STATEMENTS_COLOR}");
@@ -113,6 +116,7 @@ export function setStatements() {
   Blockly.Blocks["len"] = {
     init: function () {
       this.jsonInit(len);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_STATEMENTS_COLOR}");
       this.setTooltip(
@@ -132,6 +136,7 @@ export function setStatements() {
   Blockly.Blocks["int"] = {
     init: function () {
       this.jsonInit(int);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_STATEMENTS_COLOR}");
       this.setTooltip("Renvoie la valeur entière d'un nombre");
@@ -149,6 +154,7 @@ export function setStatements() {
   Blockly.Blocks["float"] = {
     init: function () {
       this.jsonInit(float);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_STATEMENTS_COLOR}");
       this.setTooltip("Renvoie la valeur décimale d'un nombre");
@@ -166,6 +172,7 @@ export function setStatements() {
   Blockly.Blocks["str"] = {
     init: function () {
       this.jsonInit(str);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_STATEMENTS_COLOR}");
       this.setTooltip(
@@ -185,6 +192,7 @@ export function setStatements() {
   Blockly.Blocks["list"] = {
     init: function () {
       this.jsonInit(list);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_STATEMENTS_COLOR}");
       this.setTooltip("Renvoie une liste à partir de différentes valeurs");
@@ -202,6 +210,7 @@ export function setStatements() {
   Blockly.Blocks["round"] = {
     init: function () {
       this.jsonInit(round);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_STATEMENTS_COLOR}");
       this.setTooltip("Renvoie la valeur arrondie d'un nombre");
@@ -223,6 +232,7 @@ export function setStatements() {
   Blockly.Blocks["range"] = {
     init: function () {
       this.jsonInit(range);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_STATEMENTS_COLOR}");
       this.setTooltip(

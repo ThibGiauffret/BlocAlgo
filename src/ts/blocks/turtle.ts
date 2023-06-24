@@ -9,6 +9,7 @@ export function setTurtle() {
   Blockly.Blocks["turtle_init"] = {
     init: function () {
       this.jsonInit(turtle_init);
+      this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_TURTLE_COLOR}");
@@ -42,6 +43,7 @@ export function setTurtle() {
   Blockly.Blocks["turtle_forward"] = {
     init: function () {
       this.jsonInit(turtle_forward);
+      this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_TURTLE_COLOR}");
@@ -75,6 +77,7 @@ export function setTurtle() {
   Blockly.Blocks["turtle_backward"] = {
     init: function () {
       this.jsonInit(turtle_backward);
+      this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_TURTLE_COLOR}");
@@ -108,6 +111,7 @@ export function setTurtle() {
   Blockly.Blocks["turtle_right"] = {
     init: function () {
       this.jsonInit(turtle_right);
+      this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_TURTLE_COLOR}");
@@ -143,6 +147,7 @@ export function setTurtle() {
   Blockly.Blocks["turtle_left"] = {
     init: function () {
       this.jsonInit(turtle_left);
+      this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_TURTLE_COLOR}");
@@ -175,6 +180,7 @@ export function setTurtle() {
   Blockly.Blocks["turtle_penup"] = {
     init: function () {
       this.jsonInit(turtle_penup);
+      this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_TURTLE_COLOR}");
@@ -191,6 +197,7 @@ export function setTurtle() {
   Blockly.Blocks["turtle_pendown"] = {
     init: function () {
       this.jsonInit(turtle_pendown);
+      this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_TURTLE_COLOR}");
@@ -210,6 +217,7 @@ export function setTurtle() {
   Blockly.Blocks["turtle_pencolor"] = {
     init: function () {
       this.jsonInit(turtle_pencolor);
+      this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_TURTLE_COLOR}");
@@ -243,6 +251,7 @@ export function setTurtle() {
   Blockly.Blocks["turtle_speed"] = {
     init: function () {
       this.jsonInit(turtle_speed);
+      this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_TURTLE_COLOR}");
@@ -276,6 +285,7 @@ export function setTurtle() {
   Blockly.Blocks["turtle_width"] = {
     init: function () {
       this.jsonInit(turtle_width);
+      this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_TURTLE_COLOR}");
@@ -310,6 +320,7 @@ export function setTurtle() {
   Blockly.Blocks["turtle_goto"] = {
     init: function () {
       this.jsonInit(turtle_goto);
+      this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_TURTLE_COLOR}");
@@ -355,6 +366,7 @@ export function setTurtle() {
   Blockly.Blocks["turtle_circle"] = {
     init: function () {
       this.jsonInit(turtle_circle);
+      this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_TURTLE_COLOR}");

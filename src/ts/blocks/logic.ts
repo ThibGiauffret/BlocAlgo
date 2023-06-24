@@ -11,6 +11,7 @@ export function setLogic() {
   Blockly.Blocks["condition_if"] = {
     init: function () {
       this.jsonInit(condition_if);
+      this.setInputsInline(true);
       this.appendStatementInput("content").setCheck("Boolean");
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
@@ -49,6 +50,7 @@ export function setLogic() {
   Blockly.Blocks["condition_elif"] = {
     init: function () {
       this.jsonInit(condition_elif);
+      this.setInputsInline(true);
       this.appendStatementInput("content").setCheck("Boolean");
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
@@ -77,6 +79,7 @@ export function setLogic() {
         "condition_comp"
       );
       this.appendValueInput("condition_second_value").setCheck(null);
+      this.setInputsInline(true);
       this.setOutput(true, "Boolean");
       this.setColour("%{BKY_LOGIC_COLOR}");
       this.setTooltip("Condition, renvoie un booléen");
@@ -123,6 +126,7 @@ export function setLogic() {
         "condition_comp"
       );
       this.appendValueInput("condition_second_value").setCheck(null);
+      this.setInputsInline(true);
       this.setOutput(true, "Boolean");
       this.setColour("%{BKY_LOGIC_COLOR}");
       this.setTooltip(
@@ -169,6 +173,7 @@ export function setLogic() {
   Blockly.Blocks["condition_not"] = {
     init: function () {
       this.jsonInit(condition_not);
+      this.setInputsInline(true);
       this.setOutput(true, "Boolean");
       this.setColour("%{BKY_LOGIC_COLOR}");
       this.setTooltip("Renverse le booléen");

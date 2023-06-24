@@ -15,6 +15,7 @@ export function setGraph() {
   Blockly.Blocks["matplotlib_plot"] = {
     init: function () {
       this.jsonInit(matplotlib_plot);
+      this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_GRAPH_COLOR}");
@@ -59,6 +60,7 @@ export function setGraph() {
   Blockly.Blocks["matplotlib_plot2"] = {
     init: function () {
       this.jsonInit(matplotlib_plot2);
+      this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_GRAPH_COLOR}");
@@ -113,6 +115,7 @@ export function setGraph() {
   Blockly.Blocks["matplotlib_title"] = {
     init: function () {
       this.jsonInit(matplotlib_title);
+      this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_GRAPH_COLOR}");
@@ -144,6 +147,7 @@ export function setGraph() {
   Blockly.Blocks["matplotlib_xlabel"] = {
     init: function () {
       this.jsonInit(matplotlib_xlabel);
+      this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_GRAPH_COLOR}");
@@ -175,6 +179,7 @@ export function setGraph() {
   Blockly.Blocks["matplotlib_ylabel"] = {
     init: function () {
       this.jsonInit(matplotlib_ylabel);
+      this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_GRAPH_COLOR}");

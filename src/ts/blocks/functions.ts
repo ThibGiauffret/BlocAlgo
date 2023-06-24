@@ -12,6 +12,7 @@ export function setFunctions() {
   Blockly.Blocks["function_def"] = {
     init: function () {
       this.jsonInit(function_def);
+      this.setInputsInline(true);
       this.appendStatementInput("function_statements").setCheck(null);
       this.setInputsInline(true);
       // this.setPreviousStatement(true, null);
@@ -106,6 +107,7 @@ export function setFunctions() {
   Blockly.Blocks["function_return"] = {
     init: function () {
       this.jsonInit(function_return);
+      this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setInputsInline(true);

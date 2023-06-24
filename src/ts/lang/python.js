@@ -81,7 +81,7 @@
     Blockly.Msg["math_pow"] = "math.pow ( %1 , %2 )";
     Blockly.Msg["math_ceil"] = "math.ceil ( %1 )";
     Blockly.Msg["math_floor"] = "math.floor ( %1 )";
-    Blockly.Msg["math_fabs"] = "math.fabs ( %1 )";
+    Blockly.Msg["math_abs"] = "math.fabs ( %1 )";
     Blockly.Msg["math_round"] = "math.round ( %1 )";
     Blockly.Msg["math_trunc"] = "math.trunc ( %1 )";
     Blockly.Msg["math_min"] = "min ( %1 )";

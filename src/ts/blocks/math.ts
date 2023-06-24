@@ -22,6 +22,7 @@ export function setMath() {
   Blockly.Blocks["math_operator"] = {
     init: function () {
       this.jsonInit(math_operator);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_MATH_COLOR}");
       this.setTooltip("Opérateurs mathématique");
@@ -64,6 +65,7 @@ export function setMath() {
   Blockly.Blocks["math_cos"] = {
     init: function () {
       this.jsonInit(math_cos);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_MATH_COLOR}");
       this.setTooltip("Renvoie le cosinus de x (x en radians)");
@@ -83,6 +85,7 @@ export function setMath() {
   Blockly.Blocks["math_sin"] = {
     init: function () {
       this.jsonInit(math_sin);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_MATH_COLOR}");
       this.setTooltip("Renvoie le sinus de x (x en radians)");
@@ -102,6 +105,7 @@ export function setMath() {
   Blockly.Blocks["math_tan"] = {
     init: function () {
       this.jsonInit(math_tan);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_MATH_COLOR}");
       this.setTooltip("Renvoie la tangente de x (x en radians)");
@@ -121,6 +125,7 @@ export function setMath() {
   Blockly.Blocks["math_acos"] = {
     init: function () {
       this.jsonInit(math_acos);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_MATH_COLOR}");
       this.setTooltip("Renvoie l'arc-cosinus de x (en radians)");
@@ -140,6 +145,7 @@ export function setMath() {
   Blockly.Blocks["math_asin"] = {
     init: function () {
       this.jsonInit(math_asin);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_MATH_COLOR}");
       this.setTooltip("Renvoie l'arc-sinus de x (en radians)");
@@ -159,6 +165,7 @@ export function setMath() {
   Blockly.Blocks["math_atan"] = {
     init: function () {
       this.jsonInit(math_atan);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_MATH_COLOR}");
       this.setTooltip("Renvoie l'arc-tangente de x (en radians)");
@@ -178,6 +185,7 @@ export function setMath() {
   Blockly.Blocks["math_exp"] = {
     init: function () {
       this.jsonInit(math_exp);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_MATH_COLOR}");
       this.setTooltip(
@@ -199,6 +207,7 @@ export function setMath() {
   Blockly.Blocks["math_log"] = {
     init: function () {
       this.jsonInit(math_log);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_MATH_COLOR}");
       this.setTooltip("Renvoie le logarithme naturel de x (en base e)");
@@ -218,6 +227,7 @@ export function setMath() {
   Blockly.Blocks["math_log10"] = {
     init: function () {
       this.jsonInit(math_log10);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_MATH_COLOR}");
       this.setTooltip("Renvoie le logarithme décimal de x");
@@ -237,6 +247,7 @@ export function setMath() {
   Blockly.Blocks["math_sqrt"] = {
     init: function () {
       this.jsonInit(math_sqrt);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_MATH_COLOR}");
       this.setTooltip("Renvoie la racine carrée de x");
@@ -257,6 +268,7 @@ export function setMath() {
   Blockly.Blocks["math_pow"] = {
     init: function () {
       this.jsonInit(math_pow);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_MATH_COLOR}");
       this.setTooltip("Renvoie x à la puissance y");
@@ -300,6 +312,7 @@ export function setMath() {
   Blockly.Blocks["math_ceil"] = {
     init: function () {
       this.jsonInit(math_ceil);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_MATH_COLOR}");
       this.setTooltip("Renvoie le plus petit entier supérieur ou égal à x");
@@ -319,6 +332,7 @@ export function setMath() {
   Blockly.Blocks["math_floor"] = {
     init: function () {
       this.jsonInit(math_floor);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_MATH_COLOR}");
       this.setTooltip("Renvoie le plus grand entier inférieur ou égal à x");
@@ -338,6 +352,7 @@ export function setMath() {
   Blockly.Blocks["math_abs"] = {
     init: function () {
       this.jsonInit(math_abs);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_MATH_COLOR}");
       this.setTooltip("Renvoie la valeur absolue de x");
@@ -357,6 +372,7 @@ export function setMath() {
   Blockly.Blocks["math_round"] = {
     init: function () {
       this.jsonInit(math_round);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_MATH_COLOR}");
       this.setTooltip("Renvoie la valeur arrondie de x");
@@ -376,6 +392,7 @@ export function setMath() {
   Blockly.Blocks["math_trunc"] = {
     init: function () {
       this.jsonInit(math_trunc);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_MATH_COLOR}");
       this.setTooltip("Renvoie la partie entière de x");
@@ -395,6 +412,7 @@ export function setMath() {
   Blockly.Blocks["math_min"] = {
     init: function () {
       this.jsonInit(math_min);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_MATH_COLOR}");
       this.setTooltip(
@@ -430,6 +448,7 @@ export function setMath() {
   Blockly.Blocks["math_max"] = {
     init: function () {
       this.jsonInit(math_max);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_MATH_COLOR}");
       this.setTooltip(

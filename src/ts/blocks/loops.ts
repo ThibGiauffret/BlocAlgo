@@ -14,6 +14,7 @@ export function setLoops() {
   Blockly.Blocks["boucle_for"] = {
     init: function () {
       this.jsonInit(boucle_for);
+      this.setInputsInline(true);
       this.appendStatementInput("content").setCheck("Boolean");
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
@@ -55,6 +56,7 @@ export function setLoops() {
   Blockly.Blocks["boucle_while"] = {
     init: function () {
       this.jsonInit(boucle_while);
+      this.setInputsInline(true);
       this.appendStatementInput("content").setCheck("Boolean");
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);

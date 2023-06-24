@@ -13,6 +13,7 @@ export function setPIL() {
   Blockly.Blocks["pil_open"] = {
     init: function () {
       this.jsonInit(pil_open);
+      this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_PIL_COLOR}");
@@ -43,6 +44,7 @@ export function setPIL() {
     Blockly.Blocks["pil_show"] = {
         init: function () {
             this.jsonInit(pil_show);
+            this.setInputsInline(true);
             this.setPreviousStatement(true, null);
             this.setNextStatement(true, null);
             this.setColour("%{BKY_PIL_COLOR}");
@@ -61,6 +63,7 @@ export function setPIL() {
     Blockly.Blocks["pil_size"] = {
         init: function () {
             this.jsonInit(pil_size);
+            this.setInputsInline(true);
             this.setOutput(true, null);
             this.setColour("%{BKY_PIL_COLOR}");
             this.setTooltip("Récupérer la taille d'une image sous la forme (largeur, hauteur)");
@@ -80,6 +83,7 @@ export function setPIL() {
     Blockly.Blocks["pil_resize"] = {
         init: function () {
             this.jsonInit(pil_resize);
+            this.setInputsInline(true);
             this.setPreviousStatement(true, null);
             this.setNextStatement(true, null);
             this.setColour("%{BKY_PIL_COLOR}");
@@ -115,6 +119,7 @@ export function setPIL() {
     Blockly.Blocks["pil_rotate"] = {
         init: function () {
             this.jsonInit(pil_rotate);
+            this.setInputsInline(true);
             this.setPreviousStatement(true, null);
             this.setNextStatement(true, null);
             this.setColour("%{BKY_PIL_COLOR}");
@@ -149,6 +154,7 @@ export function setPIL() {
     Blockly.Blocks["pil_crop"] = {
         init: function () {
             this.jsonInit(pil_crop);
+            this.setInputsInline(true);
             this.setPreviousStatement(true, null);
             this.setNextStatement(true, null);
             this.setColour("%{BKY_PIL_COLOR}");
@@ -183,6 +189,7 @@ export function setPIL() {
     Blockly.Blocks["pil_getpixel"] = {
         init: function () {
             this.jsonInit(pil_getpixel);
+            this.setInputsInline(true);
             this.setOutput(true, null);
             this.setColour("%{BKY_PIL_COLOR}");
             this.setTooltip("Obtenir la couleur d'un pixel (colonne, ligne)");
@@ -216,6 +223,7 @@ export function setPIL() {
     Blockly.Blocks["pil_putpixel"] = {
         init: function () {
             this.jsonInit(pil_putpixel);
+            this.setInputsInline(true);
             this.setPreviousStatement(true, null);
             this.setNextStatement(true, null);
             this.setColour("%{BKY_PIL_COLOR}");

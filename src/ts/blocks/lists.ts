@@ -14,6 +14,7 @@ export function setLists() {
   Blockly.Blocks["list_create"] = {
     init: function () {
       this.jsonInit(list_create);
+      this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_LISTS_COLOR}");
@@ -49,6 +50,7 @@ export function setLists() {
   Blockly.Blocks["list_add"] = {
     init: function () {
       this.jsonInit(list_add);
+      this.setInputsInline(true);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("%{BKY_LISTS_COLOR}");
@@ -84,6 +86,7 @@ export function setLists() {
   Blockly.Blocks["list_get"] = {
     init: function () {
       this.jsonInit(list_get);
+      this.setInputsInline(true);
       this.setOutput(true, null);
       this.setColour("%{BKY_LISTS_COLOR}");
       this.setTooltip("Accès à un élément d'une liste");
