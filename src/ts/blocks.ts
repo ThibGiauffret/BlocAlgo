@@ -116,6 +116,9 @@ export default class BlockEditor {
 
     this._injectionDiv = this._workspace.getInjectionDiv();
     this._injectionDiv.classList.add("rounded-b-md");
+
+    // refresh the workspace to display the blocks (used to avoid toolbox panel cliping)
+    Blockly.svgResize(this._workspace);
   }
 
   /**
