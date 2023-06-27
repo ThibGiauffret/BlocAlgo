@@ -21,13 +21,13 @@
     var Blockly = Blockly || { Msg: Object.create(null) };
   
     // Variables
-    Blockly.Msg["VARIABLES_SET"] = "mettre la variable %1 à la valeur %2";
-    Blockly.Msg["MATH_CHANGE_TITLE"] = "ajouter %2 à %1";
+    Blockly.Msg["VARIABLES_SET"] = "stocker la valeur %2 à la variable %1";
+    Blockly.Msg["MATH_CHANGE_TITLE"] = "incrémenter la variable %1 de %2";
 
     // Functions
-    Blockly.Msg["function_def"] = "definir %1 avec les arguments %2";
+    Blockly.Msg["function_def"] = "definir la fonction %1 avec les arguments %2";
     Blockly.Msg["function_call"] = "appeler la fonction %1 avec les arguments %2";
-    Blockly.Msg["function_return"] = "retourner %1";
+    Blockly.Msg["function_return"] = "renvoyer %1";
 
     // Graph
     Blockly.Msg["matplotlib_plot"] = 'tracer %2 en fonction de %1 avec le nom %3, la couleur %4 et le marqueur %5';
@@ -49,7 +49,7 @@
     Blockly.Msg["import_pil"] = 'importer PIL.Image sous le nom Image';
 
     // Lists
-    Blockly.Msg["list_create"] = 'créer la variable %1 et stocker la liste %2';
+    Blockly.Msg["list_create"] = 'stocker la liste %2 dans la variable %1';
     Blockly.Msg["list_add"] = 'ajouter %2 à la liste %1';
     Blockly.Msg["list_get"] = 'récupérer le %2 ème élément de la liste %1';
     Blockly.Msg["list_set"] = 'modifier le %2 ème élément de la liste %1 par %3';
@@ -118,7 +118,7 @@
     // Statements
     Blockly.Msg["time_sleep"] = "attendre %1 secondes";
     Blockly.Msg["print"] = "afficher %1";
-    Blockly.Msg["input"] = "damander à l'utilisateur de rentrer une valeur avec le message %2 et la stocker dans %1";
+    Blockly.Msg["input"] = "afficher le message %2 pour entrer une valeur et la stocker dans %1";
     Blockly.Msg["pass"] = "passer";
     Blockly.Msg["len"] = "longueur de %1";
     Blockly.Msg["int"] = "convertir %1 en entier";
