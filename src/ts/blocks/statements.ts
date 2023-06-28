@@ -168,8 +168,7 @@ export function setStatements() {
   var input = {
     message0: Blockly.Msg["input"],
     args0: [
-      // variable
-      { type: "input_value", name: "input_var", check: null},
+      { type: "field_variable", name: "input_var", variable: "variable"},
       { type: "input_value", name: "input_message", check: null},
     ],
   };
@@ -197,19 +196,7 @@ export function setStatements() {
       connection.setShadowDom(dom);
       connection.respawnShadow_();
       connection.connect(otherConnection);
-
-      var connection = this.getInput("input_var").connection;
-      var otherConnection = connection.targetConnection;
-      var dom = Blockly.Xml.textToDom(
-        "<xml>" +
-          '  <shadow type="variables_get"><field name="VAR">variable</field></shadow>' +
-          "</xml>"
-      ).children[0];
-      connection.setShadowDom(dom);
-      connection.respawnShadow_();
-      connection.connect(otherConnection);
-    
-    }
+    },
   };
 
   Blockly.Blocks["pass"] = {
