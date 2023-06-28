@@ -62,7 +62,7 @@ export function setGraphGen() {
       "TITLE",
       pythonGenerator.ORDER_NONE
     );
-    var code = 'plt.title("' + value_title + '")\n';
+    var code = 'plt.title(' + value_title + ')\n';
     return code;
   };
 
@@ -73,7 +73,7 @@ export function setGraphGen() {
       "LABEL",
       pythonGenerator.ORDER_NONE
     );
-    var code = 'plt.xlabel("' + value_xlabel + '")\n';
+    var code = 'plt.xlabel(' + value_xlabel + ')\n';
     return code;
   };
 
@@ -84,7 +84,7 @@ export function setGraphGen() {
       "LABEL",
       pythonGenerator.ORDER_NONE
     );
-    var code = 'plt.ylabel("' + value_ylabel + '")\n';
+    var code = 'plt.ylabel(' + value_ylabel + ')\n';
     return code;
   };
 

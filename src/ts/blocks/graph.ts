@@ -129,7 +129,7 @@ export function setGraph() {
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
         "<xml>" +
-          '  <shadow type="value"><field name="VALUE">Titre du graphique</field></shadow>' +
+          '  <shadow type="string"><field name="VALUE">Titre du graphique</field></shadow>' +
           "</xml>"
       ).children[0];
       connection.setShadowDom(dom);
@@ -161,7 +161,7 @@ export function setGraph() {
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
         "<xml>" +
-          '  <shadow type="value"><field name="VALUE">Label</field></shadow>' +
+          '  <shadow type="string"><field name="VALUE">Titre des abscisses </field></shadow>' +
           "</xml>"
       ).children[0];
       connection.setShadowDom(dom);
@@ -193,7 +193,7 @@ export function setGraph() {
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
         "<xml>" +
-          '  <shadow type="value"><field name="VALUE">Label</field></shadow>' +
+          '  <shadow type="string"><field name="VALUE">Titre des ordonnées</field></shadow>' +
           "</xml>"
       ).children[0];
       connection.setShadowDom(dom);

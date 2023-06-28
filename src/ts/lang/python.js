@@ -34,9 +34,9 @@
     Blockly.Msg["matplotlib_plot"] = 'plt.plot( %1 , %2 , label = "%3" , color = "%4" , marker = "%5" )';
     Blockly.Msg["matplotlib_plot2"] = 'plt.plot( %1 , %2 , "%3" )';
     Blockly.Msg["matplotlib_show"] = 'plt.show()';
-    Blockly.Msg["matplotlib_title"] = 'plt.title(" %1 ")';
-    Blockly.Msg["matplotlib_xlabel"] = 'plt.xlabel(" %1 ")';
-    Blockly.Msg["matplotlib_ylabel"] = 'plt.ylabel(" %1 ")';
+    Blockly.Msg["matplotlib_title"] = 'plt.title( %1 )';
+    Blockly.Msg["matplotlib_xlabel"] = 'plt.xlabel( %1 )';
+    Blockly.Msg["matplotlib_ylabel"] = 'plt.ylabel( %1 )';
     Blockly.Msg["matplotlib_legend"] = 'plt.legend()';
     Blockly.Msg["matplotlib_grid"] = 'plt.grid()';
     
