@@ -43,7 +43,7 @@ export function setLists() {
   var list_add = {
     "message0": Blockly.Msg["list_add"],
     "args0": [
-      { "type": "input_value", "name": "list_name", "check": null },
+      { "type": "field_variable", "name": "list_name", "variable": "liste" },
       { "type": "input_value", "name": "list_value", "check": null },
     ],
   }
@@ -79,7 +79,7 @@ export function setLists() {
   var list_get = {
     "message0": Blockly.Msg["list_get"],
     "args0": [
-      { "type": "input_value", "name": "list_name", "check": null },
+      { "type": "field_variable", "name": "list_name", "variable": "liste" },
       { "type": "input_value", "name": "list_index", "check": "Number" },
     ],
   }
@@ -114,7 +114,7 @@ export function setLists() {
   var list_set = {
     "message0": Blockly.Msg["list_set"],
     "args0": [
-      { "type": "input_value", "name": "list_name", "check": null },
+      { "type": "field_variable", "name": "list_name", "variable": "liste" },
       { "type": "input_value", "name": "list_index", "check": "Number" },
       { "type": "input_value", "name": "list_value", "check": null },
     ],
