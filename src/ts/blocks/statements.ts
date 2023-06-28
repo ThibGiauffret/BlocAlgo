@@ -20,7 +20,8 @@ export function setStatements() {
     args0: [
       {
         type: "input_value",
-        name: "NAME",
+        name: "container_value",
+        check: null,
       },
     ],
   };
@@ -32,7 +33,7 @@ export function setStatements() {
       this.setNextStatement(true, null);
       this.setColour("%{BKY_STATEMENTS_COLOR}");
       this.setTooltip(
-        ""
+        "Code libre"
       );
       this.setHelpUrl(
         ""
@@ -40,7 +41,7 @@ export function setStatements() {
       this.updateShadow();
     },
     updateShadow: function () {
-      var connection = this.getInput("NAME").connection;
+      var connection = this.getInput("container_value").connection;
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
         "<xml>" +
@@ -90,6 +91,32 @@ export function setStatements() {
       );
     },
   };
+
+  var list_def = {
+    message0: '[%1]',
+    args0: [
+      {
+        type: "field_input",
+        name: "VALUE",
+        text: "1,2,3,4,5",
+      },
+    ],
+  };
+  Blockly.Blocks["list_def"] = {
+    init: function () {
+      this.jsonInit(list_def);
+      this.setInputsInline(true);
+      this.setOutput(true, null);
+      this.setColour("%{BKY_STATEMENTS_COLOR}");
+      this.setTooltip(
+        "Liste de valeurs"
+      );
+      this.setHelpUrl(
+        ""
+      );
+    },
+  };
+
 
   var time_sleep = {
     message0: Blockly.Msg["time_sleep"],
@@ -141,8 +168,8 @@ export function setStatements() {
   var input = {
     message0: Blockly.Msg["input"],
     args0: [
-      { type: "input_value", name: "input_var", check: null },
-      { type: "field_input", name: "input_message", text: "" },
+      { type: "field_variable", name: "input_var", variable: "variable"},
+      { type: "input_value", name: "input_message", check: null},
     ],
   };
   Blockly.Blocks["input"] = {
@@ -156,6 +183,19 @@ export function setStatements() {
       this.setHelpUrl(
         "https://docs.python.org/fr/3/library/functions.html#input"
       );
+      this.updateShadow();
+    },
+    updateShadow: function () {
+      var connection = this.getInput("input_message").connection;
+      var otherConnection = connection.targetConnection;
+      var dom = Blockly.Xml.textToDom(
+        "<xml>" +
+        '  <shadow type="string"><field name="VALUE">Entrez une valeur : </field></shadow>' +
+        "</xml>"
+      ).children[0];
+      connection.setShadowDom(dom);
+      connection.respawnShadow_();
+      connection.connect(otherConnection);
     },
   };
 

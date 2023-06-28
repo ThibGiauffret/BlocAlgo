@@ -1,4 +1,4 @@
-// import * as Blockly from "blockly";
+import * as Blockly from "blockly";
 import { pythonGenerator } from "blockly/python";
 
 export function setStatementsGen() {
@@ -42,18 +42,18 @@ export function setStatementsGen() {
     return code;
   };
 
-  pythonGenerator["shadow_example"] = function (block: any) {
-    return "Test";
-  };
 
   pythonGenerator["input"] = function (block: any) {
-    var variable = pythonGenerator.valueToCode(
+    var variable = pythonGenerator.variableDB_.getName(
+      block.getFieldValue("input_var"),
+      Blockly.Names.NameType.VARIABLE
+    );
+    var message = pythonGenerator.valueToCode(
       block,
-      "input_var",
+      "input_message",
       pythonGenerator.ORDER_NONE
     );
-    var message = block.getFieldValue("input_message");
-    var code = variable + '= input("' + message + '")\r\n';
+    var code = variable + ' = input(' + message + ')\r\n';
     return code;
   };
 
@@ -127,9 +127,14 @@ export function setStatementsGen() {
     return code;
   };
 
-  // pythonGenerator["container"] = function (block: any) {
-  //   var statements = pythonGenerator.statementToCode(block, "container");
-  //   var code = statements;
-  //   return [code, pythonGenerator.ORDER_NONE];
-  // }
+  pythonGenerator["container"] = function (block: any) {
+    var value = pythonGenerator.valueToCode(
+      block,
+      "container_value",
+      pythonGenerator.ORDER_NONE
+    );
+
+    var code =  value + "\r\n";
+    return code;
+  };
 }
