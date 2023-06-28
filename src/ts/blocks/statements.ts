@@ -168,8 +168,9 @@ export function setStatements() {
   var input = {
     message0: Blockly.Msg["input"],
     args0: [
-      { type: "input_value", name: "input_var", check: null },
-      { type: "field_input", name: "input_message", text: "" },
+      // variable
+      { type: "input_value", name: "input_var", check: null},
+      { type: "input_value", name: "input_message", check: null},
     ],
   };
   Blockly.Blocks["input"] = {
@@ -183,7 +184,32 @@ export function setStatements() {
       this.setHelpUrl(
         "https://docs.python.org/fr/3/library/functions.html#input"
       );
+      this.updateShadow();
     },
+    updateShadow: function () {
+      var connection = this.getInput("input_message").connection;
+      var otherConnection = connection.targetConnection;
+      var dom = Blockly.Xml.textToDom(
+        "<xml>" +
+          '  <shadow type="string"><field name="VALUE">Entrez une valeur</field></shadow>' +
+          "</xml>"
+      ).children[0];
+      connection.setShadowDom(dom);
+      connection.respawnShadow_();
+      connection.connect(otherConnection);
+
+      var connection = this.getInput("input_var").connection;
+      var otherConnection = connection.targetConnection;
+      var dom = Blockly.Xml.textToDom(
+        "<xml>" +
+          '  <shadow type="variables_get"><field name="VAR">variable</field></shadow>' +
+          "</xml>"
+      ).children[0];
+      connection.setShadowDom(dom);
+      connection.respawnShadow_();
+      connection.connect(otherConnection);
+    
+    }
   };
 
   Blockly.Blocks["pass"] = {
