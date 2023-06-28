@@ -190,8 +190,8 @@ export function setStatements() {
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
         "<xml>" +
-          '  <shadow type="string"><field name="VALUE">Entrez une valeur</field></shadow>' +
-          "</xml>"
+        '  <shadow type="string"><field name="VALUE">Entrez une valeur : </field></shadow>' +
+        "</xml>"
       ).children[0];
       connection.setShadowDom(dom);
       connection.respawnShadow_();
