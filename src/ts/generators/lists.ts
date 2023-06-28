@@ -64,7 +64,7 @@ export function setListsGen() {
     );
 
     var code =
-      variable_var+ "[" + value_list_value + "] = " + value_list_set + "\r";
+      variable_var + "[" + value_list_value + "] = " + value_list_set + "\r";
     return code;
   };
 }
