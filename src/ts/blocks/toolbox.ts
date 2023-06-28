@@ -77,7 +77,7 @@ let toolbox = {
       name: "Déclarations",
       colour: "%{BKY_STATEMENTS_COLOR}",
       contents: [
-        { kind: "block", type: "value" },
+        { kind: "block", type: "string" },
         { kind: "text", fields: { name: "TEXT", text: "abc" } },
         {
           kind: "block",
@@ -119,10 +119,11 @@ let toolbox = {
           kind: "block",
           type: "list",
         },
+        { kind: "block", type: "value" },
         {
           kind: "block",
-          type: "round",
-        },
+          type: "container",
+        }
       ],
     },
     {

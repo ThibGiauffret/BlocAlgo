@@ -16,6 +16,11 @@ export function setStatementsGen() {
     return [value, pythonGenerator.ORDER_NONE];
   };
 
+  pythonGenerator["string"] = function (block: any) {
+    var value = block.getFieldValue("VALUE");
+    return ['"'+value+'"', pythonGenerator.ORDER_NONE];
+  };
+
   pythonGenerator["time_sleep"] = function (block: any) {
     var value_time = block.getFieldValue("time_value");
 
@@ -121,4 +126,10 @@ export function setStatementsGen() {
       "range(" + value_start + "," + value_end + "," + value_step + ")";
     return code;
   };
+
+  // pythonGenerator["container"] = function (block: any) {
+  //   var statements = pythonGenerator.statementToCode(block, "container");
+  //   var code = statements;
+  //   return [code, pythonGenerator.ORDER_NONE];
+  // }
 }

@@ -5,13 +5,51 @@ export function setStatements() {
   Blockly.Blocks["value"] = {
     init: function () {
       this.appendDummyInput().appendField(
-        new Blockly.FieldTextInput("Texte libre"),
+        new Blockly.FieldTextInput("Code libre"),
         "VALUE"
       );
       this.setOutput(true, "String");
       this.setColour("%{BKY_STATEMENTS_COLOR}");
       this.setTooltip("Un bloc de texte libre pour saisir une commande");
       this.setHelpUrl("");
+    },
+  };
+
+  var container = {
+    message0: "%1",
+    args0: [
+      {
+        type: "input_value",
+        name: "NAME",
+      },
+    ],
+  };
+  Blockly.Blocks["container"] = {
+    init: function () {
+      this.jsonInit(container);
+      this.setInputsInline(true);
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("%{BKY_STATEMENTS_COLOR}");
+      this.setTooltip(
+        ""
+      );
+      this.setHelpUrl(
+        ""
+      );
+      this.updateShadow();
+    },
+    updateShadow: function () {
+      var connection = this.getInput("NAME").connection;
+      var otherConnection = connection.targetConnection;
+      var dom = Blockly.Xml.textToDom(
+        "<xml>" +
+          '  <shadow type="value"><field name="VALUE">Code libre</field></shadow>' +
+          "</xml>"
+      ).children[0];
+      connection.setShadowDom(dom);
+      connection.respawnShadow_();
+      connection.connect(otherConnection);
     },
   };
 
@@ -25,6 +63,31 @@ export function setStatements() {
       this.setColour("%{BKY_STATEMENTS_COLOR}");
       this.setTooltip("Un bloc de texte libre pour saisir une commande");
       this.setHelpUrl("");
+    },
+  };
+
+  var string = {
+    message0: '"%1"',
+    args0: [
+      {
+        type: "field_input",
+        name: "VALUE",
+        text: "chaîne de caractères",
+      },
+    ],
+  };
+  Blockly.Blocks["string"] = {
+    init: function () {
+      this.jsonInit(string);
+      this.setInputsInline(true);
+      this.setOutput(true, null);
+      this.setColour("%{BKY_STATEMENTS_COLOR}");
+      this.setTooltip(
+        "Chaîne de caractères"
+      );
+      this.setHelpUrl(
+        ""
+      );
     },
   };
 
@@ -66,7 +129,7 @@ export function setStatements() {
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
         "<xml>" +
-          '  <shadow type="value"><field name="VALUE">"Coucou"</field></shadow>' +
+          '  <shadow type="string"><field name="VALUE">Coucou</field></shadow>' +
           "</xml>"
       ).children[0];
       connection.setShadowDom(dom);
