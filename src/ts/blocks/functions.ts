@@ -11,6 +11,7 @@ export function setFunctions() {
   };
   Blockly.Blocks["function_def"] = {
     init: function () {
+      this.setStyle('hat_blocks');
       this.jsonInit(function_def);
       this.setInputsInline(true);
       this.appendStatementInput("function_statements").setCheck(null);

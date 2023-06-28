@@ -64,7 +64,6 @@ export default class BlockEditor {
       this._language = "fr";
       Blockly.setLocale(FrenchLang);
     } 
-
     this.createWorkspace();
   }
 
@@ -165,6 +164,12 @@ export default class BlockEditor {
    * @returns {void}
    */
   public setDarkTheme() {
+    const blockStyles = {
+      'hat_blocks': {
+        'hat': 'cap',
+      },
+    };
+
     this._customDark = Blockly.Theme.defineTheme("customdark", {
       name: "customdark",
       base: Blockly.Themes.Classic,
@@ -186,6 +191,7 @@ export default class BlockEditor {
         replacementGlowColour: "#333",
         replacementGlowOpacity: 1,
       },
+      'blockStyles': blockStyles,
     });
   }
 
@@ -379,17 +385,21 @@ export default class BlockEditor {
    * @returns {void}
    */
   public setBlocks() {
+
+
     Blockly.Blocks["factory_base"] = {
       init: function () {
+        this.setStyle('hat_blocks');
         this.setDeletable(true);
         this.setMovable(false);
         this.setEditable(false);
         this.appendDummyInput().appendField("# Début du programme");
-        this.setPreviousStatement(false, null);
+        this.setPreviousStatement(false);
         this.setNextStatement(true, null);
         this.setColour("#F97316");
       },
     };
+
     setImport();
     setStatements();
     setLogic();
@@ -468,8 +478,6 @@ export default class BlockEditor {
 
     return this._language;
   }
-
-
 }
 
 
