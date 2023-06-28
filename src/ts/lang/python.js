@@ -21,6 +21,7 @@
     var Blockly = Blockly || { Msg: Object.create(null) };
 
     // Variables
+    Blockly.Msg["NEW_VARIABLE"] = "Créer une variable...";
     Blockly.Msg["VARIABLES_SET"] = "%1 = %2";
     Blockly.Msg["MATH_CHANGE_TITLE"] = "%1 += %2";
 
