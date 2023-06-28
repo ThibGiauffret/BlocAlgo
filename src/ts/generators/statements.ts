@@ -127,9 +127,14 @@ export function setStatementsGen() {
     return code;
   };
 
-  // pythonGenerator["container"] = function (block: any) {
-  //   var statements = pythonGenerator.statementToCode(block, "container");
-  //   var code = statements;
-  //   return [code, pythonGenerator.ORDER_NONE];
-  // }
+  pythonGenerator["container"] = function (block: any) {
+    var value = pythonGenerator.valueToCode(
+      block,
+      "container_value",
+      pythonGenerator.ORDER_NONE
+    );
+
+    var code =  value + "\r\n";
+    return code;
+  };
 }
