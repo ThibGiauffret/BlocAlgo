@@ -30,7 +30,7 @@ export function setLists() {
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
         "<xml>" +
-          '  <shadow type="value"><field name="VALUE">[1,2,3,4,5]</field></shadow>' +
+        '  <shadow type="list_def"><field name="VALUE">1,2,3,4,5</field></shadow>' +
           "</xml>"
       ).children[0];
       connection.setShadowDom(dom);
