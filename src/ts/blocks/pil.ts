@@ -97,7 +97,7 @@ export function setPIL() {
                 var otherConnection = connection.targetConnection;
                 var dom = Blockly.Xml.textToDom(
                   "<xml>" +
-                    '  <shadow type="value"><field name="VALUE">(100,100)</field></shadow>' +
+                    '  <shadow type="tuple_def"><field name="VALUE">100,100</field></shadow>' +
                     "</xml>"
                 ).children[0];
                 connection.setShadowDom(dom);
@@ -168,7 +168,7 @@ export function setPIL() {
                 var otherConnection = connection.targetConnection;
                 var dom = Blockly.Xml.textToDom(
                   "<xml>" +
-                    '  <shadow type="value"><field name="VALUE">(10,10,10,10)</field></shadow>' +
+                    '  <shadow type="tuple_def"><field name="VALUE">10,10,10,10</field></shadow>' +
                     "</xml>"
                 ).children[0];
                 connection.setShadowDom(dom);
@@ -202,7 +202,7 @@ export function setPIL() {
                 var otherConnection = connection.targetConnection;
                 var dom = Blockly.Xml.textToDom(
                   "<xml>" +
-                    '  <shadow type="value"><field name="VALUE">(0,0)</field></shadow>' +
+                    '  <shadow type="tuple_def"><field name="VALUE">0,0</field></shadow>' +
                     "</xml>"
                 ).children[0];
                 connection.setShadowDom(dom);
@@ -237,7 +237,7 @@ export function setPIL() {
                 var otherConnection = connection.targetConnection;
                 var dom = Blockly.Xml.textToDom(
                   "<xml>" +
-                    '  <shadow type="value"><field name="VALUE">(0,0)</field></shadow>' +
+                    '  <shadow type="tuple_def"><field name="VALUE">0,0</field></shadow>' +
                     "</xml>"
                 ).children[0];
                 connection.setShadowDom(dom);
@@ -249,7 +249,7 @@ export function setPIL() {
                 var otherConnection = connection.targetConnection;
                 var dom = Blockly.Xml.textToDom(
                   "<xml>" +
-                    '  <shadow type="value"><field name="VALUE">(120,200,55)</field></shadow>' +
+                    '  <shadow type="tuple_def"><field name="VALUE">120,200,55</field></shadow>' +
                     "</xml>"
                 ).children[0];
                 connection.setShadowDom(dom);
