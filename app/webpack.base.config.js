@@ -42,6 +42,7 @@ async function html() {
   return new HtmlWebpackPlugin({
     hash: true,
     sys_info: sysInfo,
+    date : new Date().toLocaleDateString('fr-FR'),
     template: "./src/templates/index.html",
     filename: `index.html`,
     publicPath: "",
