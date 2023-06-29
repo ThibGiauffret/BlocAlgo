@@ -117,6 +117,31 @@ export function setStatements() {
     },
   };
 
+  var tuple_def = {
+    message0: '(%1)',
+    args0: [
+      {
+        type: "field_input",
+        name: "VALUE",
+        text: "1,2",
+      },
+    ],
+  };  
+  Blockly.Blocks["tuple_def"] = {
+    init: function () {
+      this.jsonInit(tuple_def);
+      this.setInputsInline(true);
+      this.setOutput(true, null);
+      this.setColour("%{BKY_STATEMENTS_COLOR}");
+      this.setTooltip(
+        "Tuple de valeurs"
+      );
+      this.setHelpUrl(
+        ""
+      );
+    },
+  };
+
 
   var time_sleep = {
     message0: Blockly.Msg["time_sleep"],

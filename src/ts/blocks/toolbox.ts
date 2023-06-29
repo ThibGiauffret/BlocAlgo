@@ -80,6 +80,7 @@ let toolbox = {
         { kind: "block", type: "value_number" },
         { kind: "block", type: "string" },
         { kind: "block", type: "list_def" },
+        { kind: "block", type: "tuple_def" },
         {
           kind: "block",
           type: "print",

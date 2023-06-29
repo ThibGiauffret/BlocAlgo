@@ -26,6 +26,11 @@ export function setStatementsGen() {
     return ['['+value+']', pythonGenerator.ORDER_NONE];
   };
 
+  pythonGenerator["tuple_def"] = function (block: any) {
+    var value = block.getFieldValue("VALUE");
+    return ['('+value+')', pythonGenerator.ORDER_NONE];
+  };
+
   pythonGenerator["time_sleep"] = function (block: any) {
     var value_time = block.getFieldValue("time_value");
 
