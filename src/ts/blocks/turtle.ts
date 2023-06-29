@@ -231,7 +231,7 @@ export function setTurtle() {
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
         "<xml>" +
-          '  <shadow type="value"><field name="VALUE">"red"</field></shadow>' +
+          '  <shadow type="string"><field name="VALUE">red</field></shadow>' +
           "</xml>"
       ).children[0];
       connection.setShadowDom(dom);
