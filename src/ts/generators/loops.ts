@@ -9,22 +9,18 @@ export function setLoopsGen() {
       Blockly.Names.NameType.VARIABLE
     );
 
-    var value_start = block.getFieldValue("start");
-    var value_end = block.getFieldValue("end");
-    var value_step = block.getFieldValue("step");
+    var value = pythonGenerator.valueToCode(
+      block,
+      "range_for",
+      pythonGenerator.ORDER_NONE
+    );
 
     var content = pythonGenerator.statementToCode(block, "content");
 
     var code =
       "for " +
       variable_var +
-      " in range(" +
-      value_start +
-      "," +
-      value_end +
-      "," +
-      value_step +
-      "):\r\n" +
+      " in " + value + " :\r\n" +
       content;
     return code;
   };

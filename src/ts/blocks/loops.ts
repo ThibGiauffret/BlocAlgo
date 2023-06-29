@@ -6,9 +6,7 @@ export function setLoops() {
     "message0": Blockly.Msg['boucle_for'],
     "args0": [
       {"type": "field_variable", "name": "VAR", "variable": "item", "variableTypes": [""]},
-      {"type": "field_input", "name": "start", "check": "Number"},
-      {"type": "field_input", "name": "end", "check": "Number"},
-      {"type": "field_input", "name": "step", "check": "Number"}
+      {"type": "input_value", "name": "range_for", "check": null},
     ]
   };
   Blockly.Blocks["boucle_for"] = {
@@ -25,6 +23,20 @@ export function setLoops() {
       this.setHelpUrl(
         "https://docs.python.org/fr/3/tutorial/controlflow.html#for-statements"
       );
+      this.updateShadow();
+    },
+    updateShadow: function () {
+      
+      var connection = this.getInput("range_for").connection;
+      var otherConnection = connection.targetConnection;
+      var dom = Blockly.Xml.textToDom(
+        "<xml>" +
+          '  <shadow type="range"></shadow>' +
+          "</xml>"
+      ).children[0];
+      connection.setShadowDom(dom);
+      connection.respawnShadow_();
+      connection.connect(otherConnection);
     },
   };
 

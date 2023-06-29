@@ -64,7 +64,7 @@
     Blockly.Msg["condition_not"] = "not %1";
   
     // Loops
-    Blockly.Msg['boucle_for'] = "for %1 in range( %2 , %3 , %4 ) :";
+    Blockly.Msg['boucle_for'] = "for %1 in %2 :";
     Blockly.Msg['boucle_for_in'] = "for %1 in %2 :";
     Blockly.Msg['boucle_while'] = "while %1 :";
 

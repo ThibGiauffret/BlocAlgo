@@ -352,9 +352,9 @@ export function setStatements() {
   var range = {
     message0: Blockly.Msg["range"],
     args0: [
-      { type: "field_input", name: "range_start", check: "Number" },
-      { type: "field_input", name: "range_end", check: "Number" },
-      { type: "field_input", name: "range_step", check: "Number" },
+      { type: "input_value", name: "range_start", check: "Number" },
+      { type: "input_value", name: "range_end", check: "Number" },
+      { type: "input_value", name: "range_step", check: "Number" },
     ],
   };
   Blockly.Blocks["range"] = {
@@ -369,6 +369,41 @@ export function setStatements() {
       this.setHelpUrl(
         "https://docs.python.org/fr/3/library/functions.html#func-range"
       );
+      this.updateShadow();
+    },
+    updateShadow: function () {
+      var connection = this.getInput("range_start").connection;
+      var otherConnection = connection.targetConnection;
+      var dom = Blockly.Xml.textToDom(
+        "<xml>" +
+          '  <shadow type="value_number"><field name="VALUE">0</field></shadow>' +
+          "</xml>"
+      ).children[0];
+      connection.setShadowDom(dom);
+      connection.respawnShadow_();
+      connection.connect(otherConnection);
+      
+      var connection = this.getInput("range_end").connection;
+      var otherConnection = connection.targetConnection;
+      var dom = Blockly.Xml.textToDom(
+        "<xml>" +
+          '  <shadow type="value_number"><field name="VALUE">10e</field></shadow>' +
+          "</xml>"
+      ).children[0];
+      connection.setShadowDom(dom);
+      connection.respawnShadow_();
+      connection.connect(otherConnection);
+
+      var connection = this.getInput("range_step").connection;
+      var otherConnection = connection.targetConnection;
+      var dom = Blockly.Xml.textToDom(
+        "<xml>" +
+          '  <shadow type="value_number"><field name="VALUE">1</field></shadow>' +
+          "</xml>"
+      ).children[0];
+      connection.setShadowDom(dom);
+      connection.respawnShadow_();
+      connection.connect(otherConnection);
     },
   };
 }

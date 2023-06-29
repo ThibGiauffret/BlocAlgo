@@ -64,7 +64,7 @@
     Blockly.Msg["condition_not"] = "n'est pas %1";
   
     // Loops
-    Blockly.Msg['boucle_for'] = "pour %1 allant de %2 à %3 avec un pas de %4";
+    Blockly.Msg['boucle_for'] = "pour %1 allant %2";
     Blockly.Msg['boucle_for_in'] = "pour %1 dans %2";
     Blockly.Msg['boucle_while'] = "tant que %1";
 
@@ -127,7 +127,7 @@
     Blockly.Msg["str"] = "convertir %1 en chaîne de caractères";
     Blockly.Msg["list"] = "convertir %1 en liste";
     Blockly.Msg["round"] = "arrondir %1";
-    Blockly.Msg["range"] = "liste de %1 à %2 avec un pas de %3";
+    Blockly.Msg["range"] = "de %1 à %2 avec un pas de %3";
 
     // Turtle
     Blockly.Msg["turtle_init"] = "initialiser la tortue %1";

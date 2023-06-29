@@ -129,12 +129,24 @@ export function setStatementsGen() {
   };
 
   pythonGenerator["range"] = function (block: any) {
-    var value_start = block.getFieldValue("range_start");
-    var value_end = block.getFieldValue("range_end");
-    var value_step = block.getFieldValue("range_step");
+    var value_start = pythonGenerator.valueToCode(
+      block,
+      "range_start",
+      pythonGenerator.ORDER_NONE
+    );
+    var value_end = pythonGenerator.valueToCode(
+      block,
+      "range_end",
+      pythonGenerator.ORDER_NONE
+    );
+    var value_step = pythonGenerator.valueToCode(
+      block,
+      "range_step",
+      pythonGenerator.ORDER_NONE
+    );
     var code =
       "range(" + value_start + "," + value_end + "," + value_step + ")";
-    return code;
+    return [code, pythonGenerator.ORDER_NONE];
   };
 
   pythonGenerator["container"] = function (block: any) {
