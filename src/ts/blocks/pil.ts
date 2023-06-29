@@ -26,7 +26,7 @@ export function setPIL() {
         var connection = this.getInput("path_value").connection;
         var otherConnection = connection.targetConnection;
         var dom = Blockly.Xml.textToDom(
-          '<xml><shadow type="value"><field name="VALUE">"mon_image.jpg"</field></shadow></xml>'
+          '<xml><shadow type="string"><field name="VALUE">mon_image.jpg</field></shadow></xml>'
         ).children[0];
         connection.setShadowDom(dom);
         connection.respawnShadow_();
