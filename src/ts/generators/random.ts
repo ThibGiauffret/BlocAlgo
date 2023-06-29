@@ -9,8 +9,16 @@ export function setRandomGen() {
 
   // random.randint
   pythonGenerator["random_randint"] = function (block: any) {
-    var text_min = block.getFieldValue("min");
-    var text_max = block.getFieldValue("max");
+    var text_min = pythonGenerator.valueToCode(
+      block,
+      "min",
+      pythonGenerator.ORDER_NONE
+    );
+    var text_max = pythonGenerator.valueToCode(
+      block,
+      "max",
+      pythonGenerator.ORDER_NONE
+    );
     return [
       "random.randint(" + text_min + "," + text_max + ")",
       pythonGenerator.ORDER_NONE,
@@ -45,7 +53,11 @@ export function setRandomGen() {
       "list",
       pythonGenerator.ORDER_NONE
     );
-    var text_k = block.getFieldValue("k");
+    var text_k = pythonGenerator.valueToCode(
+      block,
+      "k",
+      pythonGenerator.ORDER_NONE
+    );
     return [
       "random.sample(" + value_list + "," + text_k + ")",
       pythonGenerator.ORDER_NONE,
@@ -54,8 +66,16 @@ export function setRandomGen() {
 
   // random.uniform
   pythonGenerator["random_uniform"] = function (block: any) {
-    var text_min = block.getFieldValue("min");
-    var text_max = block.getFieldValue("max");
+    var text_min = pythonGenerator.valueToCode(
+      block,
+      "min",
+      pythonGenerator.ORDER_NONE
+    );
+    var text_max = pythonGenerator.valueToCode(
+      block,
+      "max",
+      pythonGenerator.ORDER_NONE
+    );
     return [
       "random.uniform(" + text_min + "," + text_max + ")",
       pythonGenerator.ORDER_NONE,
@@ -64,9 +84,21 @@ export function setRandomGen() {
 
   // random.randrange
   pythonGenerator["random_randrange"] = function (block: any) {
-    var text_start = block.getFieldValue("min");
-    var text_stop = block.getFieldValue("max");
-    var text_step = block.getFieldValue("step");
+    var text_start = pythonGenerator.valueToCode(
+      block,
+      "start",
+      pythonGenerator.ORDER_NONE
+    );
+    var text_stop = pythonGenerator.valueToCode(
+      block,
+      "stop",
+      pythonGenerator.ORDER_NONE
+    );
+    var text_step = pythonGenerator.valueToCode(
+      block,
+      "step",
+      pythonGenerator.ORDER_NONE
+    );
     return [
       "random.randrange(" +
         text_start +
@@ -81,7 +113,11 @@ export function setRandomGen() {
 
   // random.seed
   pythonGenerator["random_seed"] = function (block: any) {
-    var text_seed = block.getFieldValue("seed");
+    var text_seed = pythonGenerator.valueToCode(
+      block,
+      "seed",
+      pythonGenerator.ORDER_NONE
+    );
     return "random.seed(" + text_seed + ")\r\n";
   };
 }

@@ -16,8 +16,8 @@ export function setRandom() {
   var random_randint = {
     message0: Blockly.Msg["random_randint"],
     args0: [
-      { type: "field_number", name: "min", value: 0, check: "Number" },
-      { type: "field_number", name: "max", value: 100, check: "Number" },
+      { type: "input_value", name: "min", value: 0, check: "Number" },
+      { type: "input_value", name: "max", value: 100, check: "Number" },
     ],
   };
   Blockly.Blocks["random_randint"] = {
@@ -32,7 +32,32 @@ export function setRandom() {
       this.setHelpUrl(
         "https://docs.python.org/3/library/random.html#random.randint"
       );
+      this.updateShadow();
     },
+    updateShadow: function () {
+
+      var connection = this.getInput("min").connection;
+      var otherConnection = connection.targetConnection;
+      var dom = Blockly.Xml.textToDom(
+        "<xml>" +
+          '  <shadow type="math_number"><field name="NUM">0</field></shadow>' +
+          "</xml>"
+      ).children[0];
+      connection.setShadowDom(dom);
+      connection.respawnShadow_();
+      connection.connect(otherConnection);
+
+      connection = this.getInput("max").connection;
+      otherConnection = connection.targetConnection;
+      dom = Blockly.Xml.textToDom(
+        "<xml>" +
+          '  <shadow type="math_number"><field name="NUM">100</field></shadow>' +
+          "</xml>"
+      ).children[0];
+      connection.setShadowDom(dom);
+      connection.respawnShadow_();
+      connection.connect(otherConnection);
+    }
   };
 
   var random_choice = {
@@ -57,7 +82,7 @@ export function setRandom() {
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
         "<xml>" +
-          '  <shadow type="value"><field name="VALUE">[1,2,3,4]</field></shadow>' +
+          '  <shadow type="list_def"><field name="VALUE">1,2,3,4</field></shadow>' +
           "</xml>"
       ).children[0];
       connection.setShadowDom(dom);
@@ -89,7 +114,7 @@ export function setRandom() {
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
         "<xml>" +
-          '  <shadow type="value"><field name="VALUE">[1,2,3,4]</field></shadow>' +
+          '  <shadow type="list_def"><field name="VALUE">1,2,3,4</field></shadow>' +
           "</xml>"
       ).children[0];
       connection.setShadowDom(dom);
@@ -101,8 +126,8 @@ export function setRandom() {
   var random_uniform = {
     message0: Blockly.Msg["random_uniform"],
     args0: [
-      { type: "field_number", name: "min", value: 0, check: "Number" },
-      { type: "field_number", name: "max", value: 1, check: "Number" },
+      { type:"input_value", name: "min", value: 0, check: "Number" },
+      { type:"input_value", name: "max", value: 1, check: "Number" },
     ],
   };
   Blockly.Blocks["random_uniform"] = {
@@ -117,15 +142,40 @@ export function setRandom() {
       this.setHelpUrl(
         "https://docs.python.org/3/library/random.html#random.uniform"
       );
+      this.updateShadow();
     },
+    updateShadow: function () {
+
+      var connection = this.getInput("min").connection;
+      var otherConnection = connection.targetConnection;
+      var dom = Blockly.Xml.textToDom(
+        "<xml>" +
+          '  <shadow type="math_number"><field name="NUM">0</field></shadow>' +
+          "</xml>"
+      ).children[0];
+      connection.setShadowDom(dom);
+      connection.respawnShadow_();
+      connection.connect(otherConnection);
+
+      connection = this.getInput("max").connection;
+      otherConnection = connection.targetConnection;
+      dom = Blockly.Xml.textToDom(
+        "<xml>" +
+          '  <shadow type="math_number"><field name="NUM">1</field></shadow>' +
+          "</xml>"
+      ).children[0];
+      connection.setShadowDom(dom);
+      connection.respawnShadow_();
+      connection.connect(otherConnection);
+    }
   };
 
   var random_randrange = {
     message0: Blockly.Msg["random_randrange"],
     args0: [
-      { type: "field_number", name: "min", value: 0, check: "Number" },
-      { type: "field_number", name: "max", value: 100, check: "Number" },
-      { type: "field_number", name: "step", value: 1, check: "Number" },
+      { type: "input_value", name: "start", value: 0, check: "Number" },
+      { type: "input_value", name: "stop", check: "Number" },
+      { type: "input_value", name: "step", value: 1, check: "Number" },
     ],
   };
   Blockly.Blocks["random_randrange"] = {
@@ -137,14 +187,53 @@ export function setRandom() {
       this.setTooltip(
         "Renvoie un entier aléatoire compris entre une valeur de départ et d'arrivée (non incluse) avec un pas donné"
       );
+      this.setHelpUrl(
+        "https://docs.python.org/3/library/random.html#random.randrange"
+      );
+      this.updateShadow();
     },
+    updateShadow: function () {
+
+      var connection = this.getInput("start").connection;
+      var otherConnection = connection.targetConnection;
+      var dom = Blockly.Xml.textToDom(
+        "<xml>" +
+          '  <shadow type="math_number"><field name="NUM">0</field></shadow>' +
+          "</xml>"
+      ).children[0];
+      connection.setShadowDom(dom);
+      connection.respawnShadow_();
+      connection.connect(otherConnection);
+
+      connection = this.getInput("step").connection;
+      otherConnection = connection.targetConnection;
+      dom = Blockly.Xml.textToDom(
+        "<xml>" +
+          '  <shadow type="math_number"><field name="NUM">10</field></shadow>' +
+          "</xml>"
+      ).children[0];
+      connection.setShadowDom(dom);
+      connection.respawnShadow_();
+      connection.connect(otherConnection);
+
+      connection = this.getInput("stop").connection;
+      otherConnection = connection.targetConnection;
+      dom = Blockly.Xml.textToDom(
+        "<xml>" +
+          '  <shadow type="math_number"><field name="NUM">100</field></shadow>' +
+          "</xml>"
+      ).children[0];
+      connection.setShadowDom(dom);
+      connection.respawnShadow_();
+      connection.connect(otherConnection);
+    }
   };
 
   var random_sample = {
     message0: Blockly.Msg["random_sample"],
     args0: [
       { type: "input_value", name: "list", check: null },
-      { type: "field_number", name: "k", value: 1, check: "Number" },
+      { type: "input_value", name: "k", value: 1, check: "Number" },
     ],
   };
   Blockly.Blocks["random_sample"] = {
@@ -165,7 +254,18 @@ export function setRandom() {
       var otherConnection = connection.targetConnection;
       var dom = Blockly.Xml.textToDom(
         "<xml>" +
-          '  <shadow type="value"><field name="VALUE">[1,2,3,4]</field></shadow>' +
+          '  <shadow type="list_def"><field name="VALUE">1,2,3,4</field></shadow>' +
+          "</xml>"
+      ).children[0];
+      connection.setShadowDom(dom);
+      connection.respawnShadow_();
+      connection.connect(otherConnection);
+
+      connection = this.getInput("k").connection;
+      otherConnection = connection.targetConnection;
+      dom = Blockly.Xml.textToDom(
+        "<xml>" +
+          '  <shadow type="math_number"><field name="NUM">2</field></shadow>' +
           "</xml>"
       ).children[0];
       connection.setShadowDom(dom);
@@ -176,7 +276,7 @@ export function setRandom() {
 
   var random_seed = {
     message0: Blockly.Msg["random_seed"],
-    args0: [{ type: "field_number", name: "seed", value: 0, check: "Number" }],
+    args0: [{ type: "input_value", name: "seed", check: "Number" }],
   };
   Blockly.Blocks["random_seed"] = {
     init: function () {
@@ -191,6 +291,20 @@ export function setRandom() {
       this.setHelpUrl(
         "https://docs.python.org/3/library/random.html#random.seed"
       );
+      this.updateShadow();
     },
+    updateShadow: function () {
+        
+        var connection = this.getInput("seed").connection;
+        var otherConnection = connection.targetConnection;
+        var dom = Blockly.Xml.textToDom(
+          "<xml>" +
+            '  <shadow type="math_number"><field name="NUM">1234</field></shadow>' +
+            "</xml>"
+        ).children[0];
+        connection.setShadowDom(dom);
+        connection.respawnShadow_();
+        connection.connect(otherConnection);
+      }
   };
 }
